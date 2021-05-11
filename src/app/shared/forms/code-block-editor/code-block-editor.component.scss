@@ -1,0 +1,58 @@
+form {
+    width: 82vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+input {
+    margin: 5px;
+    width: 90%;
+    height: 25px;
+    border-radius: 4px;
+    font-family: 'Handlee', cursive;
+}
+
+input::placeholder {
+    font-style: italic;
+    margin-left: 2px;
+}
+
+textarea {
+    width: 90%;
+    max-width: 90%;
+    min-width: 90%;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+textarea::placeholder {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+button {
+    background-color: orange;
+}
+
+button:hover {
+    background-color: rgb(250, 170, 21);
+}
+
+.button-group {
+    width: 91%;
+    display: flex; 
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#clear-button {
+    color: whitesmoke;
+    background-color: crimson;
+    margin-right: 25px;
+}
+
+#clear-button:hover{
+    background-color: rgb(221, 33, 71);
+}

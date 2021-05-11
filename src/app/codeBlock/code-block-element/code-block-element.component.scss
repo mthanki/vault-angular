@@ -1,0 +1,61 @@
+span {
+    padding-left: 5px;
+}
+
+div {
+    text-align: start;
+}
+
+.copy-section {
+    float: right;
+    margin-top: 0px;
+}
+
+.text {
+    text-align: start;
+    padding-left: 5px;
+    margin: 0 auto;
+    height: 25px;
+}
+
+.text-start {
+    text-decoration: underline;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.text-end {
+    border-end-start-radius: 4px;
+    border-end-end-radius: 4px;
+}
+
+span {
+    text-align: right;
+}
+
+.code {
+    cursor: pointer;
+    background-color: white;
+}
+
+section {
+    background-color: whitesmoke;
+    border-radius: 4px;
+}
+
+button {
+    background-color: whitesmoke;
+    width: 70px;
+    height: 25px;
+    padding: 0;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.copy-message {
+    opacity: .5;
+    font-family: 'Courgette', cursive;
+    margin-right: 10px;
+    margin-top: 8px;
+    font-size: 15px;
+}

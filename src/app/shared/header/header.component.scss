@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    height: 70px;
+    background-color: crimson;
+}
+
+ul {
+    list-style: none;
+    text-transform: uppercase;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+li {
+    background-color: darkorange;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: large;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+li:hover {
+    text-decoration: underline;
+}
