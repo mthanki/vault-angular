@@ -8,9 +8,16 @@ import { CodeBlock } from '../code-block.model';
 })
 export class CodeBlockElementComponent implements OnInit {
   @Input() codeBlock!: CodeBlock;
+
+  showPopup: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.codeBlock);
+  }
+
+  copyCode(code: string) {
+    console.log(code);
   }
 }
