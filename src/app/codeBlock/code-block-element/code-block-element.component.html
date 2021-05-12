@@ -1,4 +1,4 @@
-<div *ngIf="showPopup" id="popup-container">
+<div *ngIf="showPopup" @fadeUp id="popup-container">
     <span id="popup">Copied!</span>
 </div>
 <section>
@@ -6,11 +6,11 @@
         <span class="text-start">{{codeBlock.name}}</span>
         <div class="copy-section">
             <span class="copy-message">Double click or</span>
-            <button>Copy</button>
+            <button (click)="copyCode()">Copy</button>
         </div>
     </div>
 
-    <p (dblclick)="copyCode(codeBlock.code)" class="code">
+    <p (dblclick)="copyCode()" class="code">
         <code>{{codeBlock.code}}</code>
     </p>
 

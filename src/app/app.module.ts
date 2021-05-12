@@ -10,6 +10,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CodeBlockEditorComponent } from './shared/forms/code-block-editor/code-block-editor.component';
 import { CodeBlockElementComponent } from './codeBlock/code-block-element/code-block-element.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CodeBlockElementComponent } from './codeBlock/code-block-element/code-b
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ClipboardModule,
     AppRoutingModule,
     ReactiveFormsModule,
   ],
