@@ -1,5 +1,5 @@
 <form (ngSubmit)="onSubmit()" method="POST" [formGroup]="codeBlockForm">
-    <input name="Name" formControlName="name" placeholder="Name" autocomplete="off" type="text">
+    <input name="Name" maxlength="150" formControlName="name" placeholder="Name" autocomplete="off" type="text">
     <textarea rows="15" formControlName="code" placeholder="code" autocomplete="off" spellcheck="false" wrap="soft"
         name="Code"></textarea>
     <input name="Tags" formControlName="tags" placeholder="Tags" autocomplete="off" type="text">

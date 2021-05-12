@@ -15,7 +15,7 @@ div {
     text-align: start;
     padding-left: 5px;
     margin: 0 auto;
-    height: 25px;
+    height: auto;
 }
 
 .text-start {
@@ -27,6 +27,7 @@ div {
 .text-end {
     border-end-start-radius: 4px;
     border-end-end-radius: 4px;
+    height: auto;
 }
 
 span {
@@ -85,37 +86,4 @@ button {
 
 #popup-container {
     position: relative;
-}
-
-#popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
-}
-
-#popup .hidden {
-    visibility: hidden;
-    -webkit-animation: fadeOut 1s;
-    animation: fadeOut 1s
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-}
-
-@-webkit-keyframes fadeIn {
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
-
-@keyframes fadeIn {
-    from {opacity: 1;}
-    to {opacity: 0;}
 }
