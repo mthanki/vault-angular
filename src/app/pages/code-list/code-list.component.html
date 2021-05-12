@@ -1,9 +1,9 @@
 <section class="backplate-section">
     <h3>Code list</h3>
-    <input name="search" autocomplete="off" placeholder="Search">
-
+    <input [ngModel]="searchModel" (ngModelChange)="onSearch($event)" name="search" autocomplete="off"
+        placeholder="Search">
     <ul>
-        <li *ngFor="let codeBlock of codeBlocks">
+        <li *ngFor="let codeBlock of searchedCodeBlocks">
             <app-code-block-element [codeBlock]="codeBlock"></app-code-block-element>
         </li>
     </ul>

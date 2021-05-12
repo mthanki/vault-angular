@@ -9,11 +9,21 @@ import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
 })
 export class CodeListComponent implements OnInit {
   codeBlocks: CodeBlock[] = [];
+  searchedCodeBlocks: CodeBlock[] = [];
+  // Not utilized, just for syntatical purpose
+  searchModel = "";
 
   constructor(private cbService: CodeBlockService) { }
 
   ngOnInit(): void {
-    this.codeBlocks = this.cbService.getCodeBlocks_Test();
+    this.searchedCodeBlocks = this.codeBlocks = this.cbService.getCodeBlocks_Test();
   }
 
+  onSearch(search: any): void {
+    if (search) {
+      this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
+    } else {
+      this.searchedCodeBlocks = this.codeBlocks;
+    }
+  }
 }
