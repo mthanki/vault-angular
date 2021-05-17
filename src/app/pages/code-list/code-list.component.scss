@@ -7,7 +7,14 @@ ul {
     width: 90%;
     max-height: 78vh;
     border-radius: 4px;
-    // overflow-y: scroll;
+    overflow-y: hidden;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 input {

@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()" method="POST" [formGroup]="signUpForm">
+
+    <input name="Name" maxlength="150" formControlName="name" placeholder="Name" type="text">
+    <input name="Tags" formControlName="email" placeholder="Email" type="email">
+    <input name="Tags" formControlName="password" placeholder="Password" autocomplete="off" type="password">
+    <div class="button-group">
+        <button id="clear-button" (click)="resetForm()">Reset</button>
+        <button [disabled]="!signUpForm.valid">Signup</button>
+    </div>
+</form>

@@ -2,6 +2,8 @@ nav {
     display: flex;
     height: 70px;
     background-color: crimson;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 ul {
@@ -11,7 +13,7 @@ ul {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
 }
 
 li {
@@ -25,4 +27,14 @@ li {
 
 li:hover {
     text-decoration: underline;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+// Move buttons to left of nav
+.routing-buttons-container{
+    display: flex;
+    margin-right: auto;
 }

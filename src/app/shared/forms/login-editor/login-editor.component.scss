@@ -1,0 +1,62 @@
+form {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+input {
+    margin: 10px;
+    width: 90%;
+    height: 25px;
+    border-radius: 4px;
+    font-family: 'Handlee', cursive;
+}
+
+input::placeholder {
+    font-style: italic;
+    margin-left: 2px;
+}
+
+textarea {
+    width: 90%;
+    max-width: 90%;
+    min-width: 90%;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+textarea::placeholder {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+button {
+    color: whitesmoke;
+    background-color: green;
+}
+
+button:hover {
+    background-color: rgb(23, 134, 23)
+}
+
+button:disabled{
+    background-color: gray;
+}
+
+.button-group {
+    width: 91%;
+    display: flex; 
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#clear-button {
+    background-color: crimson;
+    margin-right: 25px;
+}
+
+#clear-button:hover{
+    background-color: rgb(221, 33, 71);
+}
