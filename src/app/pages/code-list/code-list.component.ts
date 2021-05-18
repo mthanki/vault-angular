@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { CodeBlock } from 'src/app/codeBlock/code-block.model';
 import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
 
@@ -16,7 +17,14 @@ export class CodeListComponent implements OnInit {
   constructor(private cbService: CodeBlockService) { }
 
   ngOnInit(): void {
-    this.searchedCodeBlocks = this.codeBlocks = this.cbService.getCodeBlocks_Test();
+    this.cbService.getUserCodeBlocks().subscribe(blocks => {
+      console.log(blocks);
+      this.searchedCodeBlocks = this.codeBlocks = blocks.codeBlocks;
+    })
+
+    // this.cbService.getUserCodeBlocks().pipe(
+    //   map(cb => cb = cb.codeBlocks),
+    // )
   }
 
   onSearch(search: any): void {

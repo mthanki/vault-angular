@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { fadeUp } from 'src/animations';
+import { fade, fadeUp } from 'src/animations';
 import { CodeBlock } from '../code-block.model';
 import { Clipboard } from '@angular/cdk/clipboard';
 
@@ -9,7 +9,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
   templateUrl: './code-block-element.component.html',
   styleUrls: ['./code-block-element.component.scss'],
   animations: [
-    fadeUp
+    fadeUp, fade
   ]
 })
 export class CodeBlockElementComponent implements OnInit {
@@ -25,7 +25,7 @@ export class CodeBlockElementComponent implements OnInit {
 
   copyCode() {
     this.clipboard.copy(this.codeBlock.code);
-    
+
     this.showPopup = true;
     setTimeout(() => {
       this.showPopup = false;

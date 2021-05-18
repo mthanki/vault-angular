@@ -20,14 +20,16 @@ export class CodeBlockEditorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
-    this.cbService.addCodeBlock(this.codeBlockForm.value);
+  onSubmit() {
+    const codeBlock: CodeBlock = { ...this.codeBlockForm.value, creator: '60a1962b0f21323643777037' };
+
+    this.cbService.createCodeBlock(codeBlock)
+      .subscribe(cb => console.log(cb));
+
     this.resetForm();
-    console.log(this.codeBlockForm.value);
-    console.log(this.cbService.getCodeBlocks());
   }
 
-  resetForm(){
+  resetForm() {
     this.codeBlockForm.reset();
   }
 

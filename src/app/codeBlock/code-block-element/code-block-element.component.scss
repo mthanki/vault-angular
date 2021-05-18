@@ -36,10 +36,12 @@ span {
 
 .code {
     background-color: white;
+    white-space: pre-wrap;
+    text-align: start;
 }
 
 section {
-    background-color: whitesmoke;
+    background-color: rgb(233, 233, 233);
     border-radius: 4px;
 }
 
