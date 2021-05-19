@@ -18,7 +18,6 @@ export class CodeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.cbService.getUserCodeBlocks().subscribe(blocks => {
-      console.log(blocks);
       this.searchedCodeBlocks = this.codeBlocks = blocks.codeBlocks;
     })
 

@@ -11,22 +11,6 @@ export class CodeBlockService {
 
   private codeBlocksUrl = 'code-blocks';
 
-  private codeBlocks: CodeBlock[] = [];
-  private codeBlocks_Filled: CodeBlock[] = [
-    {
-      name: "nav color skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue",
-      code: "color skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue",
-      tags: 'htmlcolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue',
-      creator: "60a1962b0f2132364377703"
-    },
-    {
-      name: "headercolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue",
-      code: "leaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf green",
-      tags: 'csscolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue',
-      creator: "60a1962b0f2132364377703"
-    }
-  ];
-
   constructor(private http: HttpClient, private dataService: DataService) { }
 
   getUserCodeBlocks(): Observable<any> {

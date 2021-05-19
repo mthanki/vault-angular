@@ -15,6 +15,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { LoginEditorComponent } from './shared/forms/login-editor/login-editor.component';
 import { SignupEditorComponent } from './shared/forms/signup-editor/signup-editor.component';
+import { httpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { SignupEditorComponent } from './shared/forms/signup-editor/signup-edito
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
