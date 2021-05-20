@@ -21,7 +21,8 @@ export class CodeBlockEditorComponent implements OnInit {
   }
 
   onSubmit() {
-    const codeBlock: CodeBlock = { ...this.codeBlockForm.value, creator: '60a1962b0f21323643777037' };
+    const creatorId = localStorage.getItem('userId');
+    const codeBlock: CodeBlock = { ...this.codeBlockForm.value, creator: creatorId };
 
     this.cbService.createCodeBlock(codeBlock)
       .subscribe(cb => console.log(cb));

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { DataService } from '../http/data.service';
 import { LocalStorageService } from '../localStorage/local-storage.service';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
   constructor(
     private dataService: DataService,
     private localStorage: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private asyncStorage: StorageMap
   ) {
     const token = this.getAuthorizationToken();
     this.isLoggedIn = !!token;
@@ -35,9 +37,10 @@ export class AuthService {
   }
 
   logout() {
-    this.localStorage.remove('token');
-    this.localStorage.remove('userId');
-    this.localStorage.remove('userData');
+    localStorage.clear();
+    localStorage.remove('token');
+    localStorage.remove('userId');
+    localStorage.remove('userData');
 
     this.isLoggedIn = false;
 
