@@ -5,13 +5,19 @@
     <div>
         <span class="text-start">{{codeBlock.name}}</span>
         <div class="copy-section">
-            <span class="copy-message">Double click or</span>
+            <!-- <span class="copy-message">Double click or</span> -->
+            <button (click)="copyCode()">Delete</button>
+            <button (click)="toggleEditMode()">{{updateButtonLabel}}</button>
             <button (click)="copyCode()">Copy</button>
         </div>
     </div>
 
+    <!-- <div id="editor-container"> -->
     <p (dblclick)="copyCode()" class="code">
-        <code>{{codeBlock.code}}</code>
+        <ngx-monaco-editor [class.highlight]="editMode" (init)="editorInit($event)" [(ngModel)]=" codeBlock.code"
+            [options]="cbService.editorOptions">
+        </ngx-monaco-editor>
+        <!-- <code>{{codeBlock.code}}</code> -->
     </p>
 
     <p class="text text-end">{{codeBlock.tags}}</p>

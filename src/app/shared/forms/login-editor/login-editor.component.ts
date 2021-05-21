@@ -31,6 +31,9 @@ export class LoginEditorComponent implements OnInit {
       localStorage.setItem('token', userAuthData.token);
       localStorage.setItem('isLoggedIn', 'true');
 
+      const expiration = new Date(new Date().getTime() + 1000 * 60 * 60);
+      localStorage.setItem('expiration', expiration.toISOString());
+
       this.router.navigate(['/code-list']);
 
       this.authService.isLoggedIn = true;

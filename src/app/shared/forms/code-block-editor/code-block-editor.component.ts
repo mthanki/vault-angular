@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CodeBlock } from 'src/app/codeBlock/code-block.model';
 import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
 
+
 @Component({
   selector: 'app-code-block-editor',
   templateUrl: './code-block-editor.component.html',
@@ -15,7 +16,7 @@ export class CodeBlockEditorComponent implements OnInit {
     tags: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private cbService: CodeBlockService) { }
+  constructor(private fb: FormBuilder, public cbService: CodeBlockService) { }
 
   ngOnInit(): void {
   }

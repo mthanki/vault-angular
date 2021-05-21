@@ -26,3 +26,13 @@ button {
 }
 
 html, body { height: 100%; }
+
+ngx-monaco-editor {
+    height: 400px;
+    max-width: 91%;
+    min-width: 91%;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    text-align: start;
+
+}

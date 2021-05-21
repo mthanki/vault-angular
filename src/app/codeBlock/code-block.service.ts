@@ -4,10 +4,18 @@ import { Observable } from 'rxjs';
 import { DataService } from '../http/data.service';
 import { CodeBlock } from './code-block.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CodeBlockService {
+  editorOptions = {
+    theme: 'vs-dark',
+    language: 'javascript',
+    readonly: true,
+    codeLens: false,
+    // lineNumbers: "on",
+  };
 
   private codeBlocksUrl = 'code-blocks';
 

@@ -11,17 +11,29 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 export class AuthService {
   userUrl = "users";
   isLoggedIn = false;
-  // isLoggedIn$ = new Subject();
   redirectUrl = "/";
+  logoutTimer: any;
 
   constructor(
     private dataService: DataService,
-    private localStorage: LocalStorageService,
     private router: Router,
     private asyncStorage: StorageMap
   ) {
     const token = this.getAuthorizationToken();
-    this.isLoggedIn = !!token;
+    let expiration: any = localStorage.getItem('expiration');
+    expiration = new Date(expiration);
+
+    if (!!token && expiration > new Date()) {
+      this.isLoggedIn = true;
+
+      const remainingTime = expiration.getTime() - new Date().getTime();
+      this.logoutTimer = setTimeout(() => {
+        this.logout();
+      }, remainingTime);
+    } else {
+      this.logout();
+      this.router.navigate(['login']);
+    }
   }
 
   signup(userData: any) {
@@ -33,21 +45,14 @@ export class AuthService {
   }
 
   getAuthorizationToken() {
-    return this.localStorage.get('token');
+    return localStorage.getItem('token');
   }
 
   logout() {
     localStorage.clear();
-    localStorage.remove('token');
-    localStorage.remove('userId');
-    localStorage.remove('userData');
-
     this.isLoggedIn = false;
-
-    // this.isLoggedIn$.next(this.isLoggedIn);
-
-    console.log('Logged Out!');
     this.router.navigate(['/login']);
+    clearTimeout(this.logoutTimer);
   }
 
 }

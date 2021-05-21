@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddToListComponent } from './pages/add-to-list/add-to-list.component';
@@ -37,6 +39,7 @@ import { httpInterceptorProviders } from './http-interceptors';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MonacoEditorModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
