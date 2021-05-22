@@ -32,7 +32,7 @@ export class AuthService {
       }, remainingTime);
     } else {
       this.logout();
-      this.router.navigate(['login']);
+      // this.router.navigate(['login']);
     }
   }
 
@@ -51,7 +51,7 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.isLoggedIn = false;
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
     clearTimeout(this.logoutTimer);
   }
 
