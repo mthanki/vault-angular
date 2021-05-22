@@ -4,7 +4,8 @@
         placeholder="Search">
     <ul>
         <li *ngFor="let codeBlock of searchedCodeBlocks">
-            <app-code-block-element [codeBlock]="codeBlock"></app-code-block-element>
+            <app-code-block-element (blockDeleted)="removeFromList($event)" [codeBlock]="codeBlock">
+            </app-code-block-element>
         </li>
     </ul>
 </section>

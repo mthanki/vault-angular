@@ -4,7 +4,7 @@ import { fade, fadeUp } from 'src/animations';
 import { CodeBlock } from '../code-block.model';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CodeBlockService } from '../code-block.service';
-import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-code-block-element',
@@ -16,10 +16,13 @@ import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 })
 export class CodeBlockElementComponent implements OnInit {
   @Input() codeBlock!: CodeBlock;
+  @Output() blockDeleted = new EventEmitter<string>();
+
   editor: any;
   showPopup: boolean = false;
   editMode = false;
   updateButtonLabel = "Edit";
+  deleteQueue = false;
 
   editorInit(editor: any) {
     // Here you can access editor instance
@@ -53,6 +56,27 @@ export class CodeBlockElementComponent implements OnInit {
     this.editMode = !this.editMode;
     this.updateButtonLabel = this.editMode ? "Update" : "Edit";
 
+    if (!this.editMode) {
+      this.cbService.updateCodeBlock(this.codeBlock).subscribe(
+        updatedBlock => {
+
+        },
+        error => {
+          window.alert(error);
+        });
+    }
+
     this.editor.updateOptions({ readOnly: !this.editMode })
+  }
+
+  deleteBlock() {
+    this.cbService.deleteCodeBlock(this.codeBlock).subscribe(
+      message => {
+        this.deleteQueue = false;
+        this.blockDeleted.emit(this.codeBlock.id);
+      },
+      error => {
+        window.alert(error);
+      });
   }
 }

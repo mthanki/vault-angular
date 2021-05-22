@@ -5,9 +5,14 @@
     <div>
         <span class="text-start">{{codeBlock.name}}</span>
         <div class="copy-section">
-            <!-- <span class="copy-message">Double click or</span> -->
-            <button (click)="copyCode()">Delete</button>
-            <button (click)="toggleEditMode()">{{updateButtonLabel}}</button>
+            <ng-container *ngIf="deleteQueue">
+                <span class="copy-message">Are you sure?</span>
+                <button class="decision-buttons" (click)="deleteBlock()">Yes</button>
+                <button class="decision-buttons" (click)="deleteQueue = false">No</button>
+            </ng-container>
+
+            <button *ngIf="!deleteQueue" (click)="deleteQueue = true">Delete</button>
+            <button [class.queue-background]="editMode" (click)="toggleEditMode()">{{updateButtonLabel}}</button>
             <button (click)="copyCode()">Copy</button>
         </div>
     </div>

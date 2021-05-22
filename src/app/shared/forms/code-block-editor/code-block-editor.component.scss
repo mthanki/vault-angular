@@ -14,6 +14,13 @@ input {
     font-family: 'Handlee', cursive;
 }
 
+tag-input{
+    max-width: 100%;
+    // overflow-x: scroll;
+    border-radius: 50px;
+    height: 50px;
+}
+
 input::placeholder {
     font-style: italic;
     margin-left: 2px;

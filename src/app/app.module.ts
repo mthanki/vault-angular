@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
+import { TagInputModule } from 'ngx-chips';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +35,7 @@ import { httpInterceptorProviders } from './http-interceptors';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    TagInputModule,
     ClipboardModule,
     AppRoutingModule,
     ReactiveFormsModule,

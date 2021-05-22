@@ -10,6 +10,7 @@ import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
   styleUrls: ['./code-block-editor.component.scss']
 })
 export class CodeBlockEditorComponent implements OnInit {
+  items: any;
   codeBlockForm = this.fb.group({
     name: ['', Validators.required],
     code: ['', Validators.required],

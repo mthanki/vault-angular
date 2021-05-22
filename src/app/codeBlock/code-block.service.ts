@@ -23,12 +23,18 @@ export class CodeBlockService {
 
   getUserCodeBlocks(): Observable<any> {
     // const params = new HttpParams({});
-    return this.dataService.get(`${this.codeBlocksUrl}/user/60a48e6db4ddb4814f9de6ec`, {});
+    return this.dataService.get(`${this.codeBlocksUrl}/user/all-blocks`, {});
   }
 
   createCodeBlock(block: CodeBlock): Observable<CodeBlock> {
     return this.dataService.post(`${this.codeBlocksUrl}`, block);
   }
 
-  deleteCodeBlock() { }
+  updateCodeBlock(block: CodeBlock): Observable<CodeBlock> {
+    return this.dataService.patch(`${this.codeBlocksUrl}/${block.id}`, block);
+  }
+
+  deleteCodeBlock(block: CodeBlock): Observable<CodeBlock> {
+    return this.dataService.delete(`${this.codeBlocksUrl}/${block.id}`, {});
+  }
 }
