@@ -4,39 +4,37 @@ import { Observable } from 'rxjs';
 import { DataService } from '../http/data.service';
 import { CodeBlock } from './code-block.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CodeBlockService {
+  editorOptions = {
+    theme: 'vs-dark',
+    language: 'javascript',
+    readonly: true,
+    codeLens: false,
+    // lineNumbers: "on",
+  };
 
   private codeBlocksUrl = 'code-blocks';
-
-  private codeBlocks: CodeBlock[] = [];
-  private codeBlocks_Filled: CodeBlock[] = [
-    {
-      name: "nav color skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue",
-      code: "color skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue",
-      tags: 'htmlcolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue',
-      creator: "60a1962b0f2132364377703"
-    },
-    {
-      name: "headercolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue",
-      code: "leaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf greenleaf green",
-      tags: 'csscolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skybluecolor skyblue',
-      creator: "60a1962b0f2132364377703"
-    }
-  ];
 
   constructor(private http: HttpClient, private dataService: DataService) { }
 
   getUserCodeBlocks(): Observable<any> {
     // const params = new HttpParams({});
-    return this.dataService.get(`${this.codeBlocksUrl}/user/60a1962b0f21323643777037`, {});
+    return this.dataService.get(`${this.codeBlocksUrl}/user/all-blocks`, {});
   }
 
   createCodeBlock(block: CodeBlock): Observable<CodeBlock> {
     return this.dataService.post(`${this.codeBlocksUrl}`, block);
   }
 
-  deleteCodeBlock() { }
+  updateCodeBlock(block: CodeBlock): Observable<CodeBlock> {
+    return this.dataService.patch(`${this.codeBlocksUrl}/${block.id}`, block);
+  }
+
+  deleteCodeBlock(block: CodeBlock): Observable<CodeBlock> {
+    return this.dataService.delete(`${this.codeBlocksUrl}/${block.id}`, {});
+  }
 }

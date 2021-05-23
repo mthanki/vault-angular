@@ -23,6 +23,18 @@ export class DataService {
     );
   }
 
+  patch(segment: String, data: any): Observable<any> {
+    return this.http.patch(`${environment.url}/${segment}`, data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  delete(segment: String, data: any): Observable<any> {
+    return this.http.delete(`${environment.url}/${segment}`, data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

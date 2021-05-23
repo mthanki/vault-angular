@@ -18,7 +18,6 @@ export class CodeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.cbService.getUserCodeBlocks().subscribe(blocks => {
-      console.log(blocks);
       this.searchedCodeBlocks = this.codeBlocks = blocks.codeBlocks;
     })
 
@@ -27,11 +26,16 @@ export class CodeListComponent implements OnInit {
     // )
   }
 
-  onSearch(search: any): void {
+  onSearch(search: string): void {
     if (search) {
       this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
+      // this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
     } else {
       this.searchedCodeBlocks = this.codeBlocks;
     }
+  }
+
+  removeFromList(id: string) {
+    this.searchedCodeBlocks = this.codeBlocks = this.codeBlocks.filter(block => block.id != id);
   }
 }

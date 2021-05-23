@@ -1,12 +1,15 @@
 <nav>
     <ul>
-        <div class="routing-buttons-container">
+        <div *ngIf="authService.isLoggedIn" class="routing-buttons-container">
             <li routerLink="add-to-list" routerLinkActive="active">Add</li>
             <li routerLink="code-list" routerLinkActive="active">Vault</li>
         </div>
 
-        <li routerLink="signup" routerLinkActive="active">Signup</li>
-        <li routerLink="login" routerLinkActive="active">Login</li>
+        <ng-container *ngIf="!authService.isLoggedIn">
+            <li routerLink="signup" routerLinkActive="active">Signup</li>
+            <li routerLink="login" routerLinkActive="active">Login</li>
+        </ng-container>
+        <li *ngIf="authService.isLoggedIn" class="logout" (click)="logout()">Logout</li>
     </ul>
 </nav>
 <div class="placeholder"></div>
