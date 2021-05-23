@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "vault-angular-ad413": {
+      "hosting": {
+        "vault": [
+          "vault-angular-ad413"
+        ]
+      }
+    }
+  }
+}
