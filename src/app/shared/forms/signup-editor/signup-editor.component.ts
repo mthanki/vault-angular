@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { LocalStorageService } from 'src/app/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-signup-editor',
@@ -19,7 +18,6 @@ export class SignupEditorComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private localStorage: LocalStorageService,
     private router: Router
   ) { }
 
@@ -31,12 +29,16 @@ export class SignupEditorComponent implements OnInit {
       localStorage.setItem('userData', JSON.stringify(userAuthData));
       localStorage.setItem('userId', userAuthData.userId);
       localStorage.setItem('token', userAuthData.token);
+      localStorage.setItem('isLoggedIn', 'true');
 
       this.authService.isLoggedIn = true;
 
-      this.router.navigate(['/add-to-list']);
+      const expiration = new Date(new Date().getTime() + 1000 * 60 * 60);
+      localStorage.setItem('expiration', expiration.toISOString());
 
-      localStorage.setItem('isLoggedIn', 'true');
+      this.authService.startSessionTimer(expiration);
+
+      this.router.navigate(['/add-to-list']);
     });
   }
 

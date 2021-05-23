@@ -14,13 +14,6 @@ input {
     font-family: 'Handlee', cursive;
 }
 
-tag-input{
-    max-width: 100%;
-    // overflow-x: scroll;
-    border-radius: 50px;
-    height: 50px;
-}
-
 input::placeholder {
     font-style: italic;
     margin-left: 2px;
@@ -62,4 +55,25 @@ button:hover {
 
 #clear-button:hover{
     background-color: rgb(221, 33, 71);
+}
+
+mat-chip-list {
+    min-width: 91%;
+    max-width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input.mat-chip-input{
+    min-width: 90%;
+}
+
+mat-chip > span {
+    margin: 0 0 5px 10px;
+}
+
+mat-chip{
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Courier New', Courier, monospace;
 }

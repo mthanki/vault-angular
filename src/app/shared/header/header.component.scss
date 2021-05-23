@@ -39,10 +39,12 @@ li {
 
 li:hover {
     text-decoration: underline;
+    text-underline-offset: 1px;
 }
 
 .active {
     text-decoration: underline;
+    text-underline-offset: 1px;
 }
 
 // Move buttons to left of nav

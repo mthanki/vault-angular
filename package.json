@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +25,6 @@
     "@materia-ui/ngx-monaco-editor": "^5.1.0",
     "@ngx-pwa/local-storage": "11.1.0",
     "monaco-editor": "^0.24.0",
-    "ngx-chips": "^2.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

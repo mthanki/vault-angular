@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
 import { DataService } from '../http/data.service';
-import { LocalStorageService } from '../localStorage/local-storage.service';
-import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +14,6 @@ export class AuthService {
   constructor(
     private dataService: DataService,
     private router: Router,
-    private asyncStorage: StorageMap
   ) {
     const token = this.getAuthorizationToken();
     let expiration: any = localStorage.getItem('expiration');
@@ -26,13 +22,9 @@ export class AuthService {
     if (!!token && expiration > new Date()) {
       this.isLoggedIn = true;
 
-      const remainingTime = expiration.getTime() - new Date().getTime();
-      this.logoutTimer = setTimeout(() => {
-        this.logout();
-      }, remainingTime);
+      this.startSessionTimer(expiration);
     } else {
       this.logout();
-      // this.router.navigate(['login']);
     }
   }
 
@@ -51,8 +43,15 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.isLoggedIn = false;
-    // this.router.navigate(['/login']);
     clearTimeout(this.logoutTimer);
+  }
+
+  startSessionTimer(expiration: Date) {
+    const remainingTime = expiration.getTime() - new Date().getTime();
+    this.logoutTimer = setTimeout(() => {
+      this.logout();
+      this.router.navigate(['/login']);
+    }, remainingTime);
   }
 
 }
