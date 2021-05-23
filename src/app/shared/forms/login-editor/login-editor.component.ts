@@ -24,7 +24,6 @@ export class LoginEditorComponent implements OnInit {
 
   onSubmit(): void {
     this.authService.login(this.loginForm.value).subscribe(userAuthData => {
-      console.log(userAuthData);
 
       localStorage.setItem('userData', JSON.stringify(userAuthData));
       localStorage.setItem('userId', userAuthData.userId);
