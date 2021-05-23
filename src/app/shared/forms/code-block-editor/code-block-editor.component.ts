@@ -18,7 +18,7 @@ export class CodeBlockEditorComponent implements OnInit {
   // tag input
   visible = true;
   readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
-  tags: string[] = ['vm', 'apple', 'lorem-ipsum'];
+  tags: string[] = [];
 
   codeBlockForm = this.fb.group({
     name: ['', Validators.required],
