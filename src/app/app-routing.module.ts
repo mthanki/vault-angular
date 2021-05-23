@@ -13,6 +13,7 @@ const appRoutes: Routes = [
   { path: 'code-list', component: CodeListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: AuthenticationComponent },
   { path: 'signup', component: AuthenticationComponent },
+  { path: '**', redirectTo: 'add-to-list' },
 ];
 
 @NgModule({
