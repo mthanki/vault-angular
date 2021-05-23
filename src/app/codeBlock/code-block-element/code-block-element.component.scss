@@ -117,3 +117,18 @@ ngx-monaco-editor {
 #editor-container{
     padding: 0;
 }
+
+mat-chip{
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.mat-chip.mat-standard-chip {
+    background-color: gray;
+    color: white;
+}
+
+#chip-container{
+    margin: 0 10px;
+}

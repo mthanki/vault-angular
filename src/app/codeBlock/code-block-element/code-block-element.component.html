@@ -25,5 +25,13 @@
         <!-- <code>{{codeBlock.code}}</code> -->
     </p>
 
-    <p class="text text-end">{{codeBlock.tags}}</p>
+    <div id="chip-container">
+        <mat-chip-list #chipList>
+            <mat-chip *ngFor="let tag of codeBlock.tags">
+                {{tag}}
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+
+    <!-- <p class="text text-end">{{codeBlock.tags}}</p> -->
 </section>

@@ -11,6 +11,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
   styleUrls: ['./code-block-editor.component.scss']
 })
 export class CodeBlockEditorComponent implements OnInit {
+  editor: any;
   items: any;
   // just the html input for reading tags user input.
   tagInput = "";
@@ -23,6 +24,16 @@ export class CodeBlockEditorComponent implements OnInit {
     name: ['', Validators.required],
     code: ['', Validators.required],
   });
+
+  editorInit(editor: any) {
+    // Here you can access editor instance
+    this.editor = editor;
+    this.editor.updateOptions({
+      validate: false,
+      noSemanticValidation: true,
+      noSyntaxValidation: true,
+    })
+  }
 
   constructor(private fb: FormBuilder, public cbService: CodeBlockService) { }
 

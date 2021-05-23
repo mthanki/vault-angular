@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 
@@ -43,6 +44,7 @@ import { httpInterceptorProviders } from './http-interceptors';
     HttpClientModule,
     MonacoEditorModule,
     MatChipsModule,
+    MatSnackBarModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { CodeBlock } from '../code-block.model';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CodeBlockService } from '../code-block.service';
 import { Output, EventEmitter } from '@angular/core';
+import { ENTER, SPACE, SEMICOLON } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-code-block-element',
@@ -24,13 +25,14 @@ export class CodeBlockElementComponent implements OnInit {
   updateButtonLabel = "Edit";
   deleteQueue = false;
 
+  readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
+
   editorInit(editor: any) {
     // Here you can access editor instance
     this.editor = editor;
     this.editor.updateOptions({
-      lineNumbers: "off",
+      // lineNumbers: "off",
       readOnly: true,
-      // codeLens: false,
       quickSuggestions: false,
       formatOnPaste: true,
       wordWrap: "on"

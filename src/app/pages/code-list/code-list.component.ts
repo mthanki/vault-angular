@@ -29,6 +29,7 @@ export class CodeListComponent implements OnInit {
   onSearch(search: string): void {
     if (search) {
       this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
+      // this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
     } else {
       this.searchedCodeBlocks = this.codeBlocks;
     }
