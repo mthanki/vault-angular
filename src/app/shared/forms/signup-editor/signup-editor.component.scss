@@ -1,62 +1,76 @@
 form {
-    width: 100%;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: space-around;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
 }
 
 input {
-    margin: 10px;
-    width: 90%;
-    height: 25px;
-    border-radius: 4px;
-    font-family: 'Handlee', cursive;
+  margin: 10px;
+  width: 90%;
+  height: 25px;
+  border-radius: 4px;
+  font-family: "Handlee", cursive;
 }
 
 input::placeholder {
-    font-style: italic;
-    margin-left: 2px;
+  font-style: italic;
+  margin-left: 2px;
 }
 
 textarea {
-    width: 90%;
-    max-width: 90%;
-    min-width: 90%;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace;
+  width: 90%;
+  max-width: 90%;
+  min-width: 90%;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
 }
 
 textarea::placeholder {
-    font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
 button {
-    color: whitesmoke;
-    background-color: green;
+  color: whitesmoke;
+  background-color: green;
 }
 
 button:hover {
-    background-color: rgb(23, 134, 23)
-}
-
-button:disabled{
-    background-color: gray;
+  background-color: rgb(23, 134, 23);
 }
 
 .button-group {
-    width: 91%;
-    display: flex; 
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-    align-items: flex-end;
+  width: 91%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 10px;
 }
 
 #clear-button {
-    background-color: crimson;
-    margin-right: 25px;
+  background-color: crimson;
+  margin-right: 25px;
 }
 
-#clear-button:hover{
-    background-color: rgb(221, 33, 71);
+#clear-button:hover {
+  background-color: rgb(221, 33, 71);
+}
+
+ul {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  align-self: flex-start;
+  margin: 1px;
+}
+
+.errors {
+  // text-align: left;
+}
+
+ul.errors > li {
+  font-size: 14px;
+  color: rgb(175, 0, 0);
 }

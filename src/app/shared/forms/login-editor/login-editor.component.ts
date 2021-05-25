@@ -14,6 +14,8 @@ export class LoginEditorComponent implements OnInit {
     password: ['', [Validators.required]]
   });
 
+  isLoginEnabled = true;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -23,6 +25,7 @@ export class LoginEditorComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.isLoginEnabled = false;
     this.authService.login(this.loginForm.value).subscribe(userAuthData => {
 
       localStorage.setItem('userData', JSON.stringify(userAuthData));
@@ -39,6 +42,8 @@ export class LoginEditorComponent implements OnInit {
       this.authService.isLoggedIn = true;
       this.authService.startSessionTimer(expiration);
 
+    }, error => {
+      this.isLoginEnabled = true;
     });
   }
 

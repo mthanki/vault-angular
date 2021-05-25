@@ -11,6 +11,7 @@ import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
 export class CodeListComponent implements OnInit {
   codeBlocks: CodeBlock[] = [];
   searchedCodeBlocks: CodeBlock[] = [];
+  noBlocksMessage = "No Blocks found, click on \'Add\' to start creating them."
   // Not utilized, just for syntatical purpose
   searchModel = "";
 

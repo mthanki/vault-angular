@@ -4,6 +4,6 @@
     <input name="Tags" formControlName="password" placeholder="Password" autocomplete="off" type="password">
     <div class="button-group">
         <button type="button" id="clear-button" (click)="resetForm()">Reset</button>
-        <button [disabled]="!loginForm.valid">Login</button>
+        <button [disabled]="!loginForm.valid || !isLoginEnabled">Login</button>
     </div>
 </form>

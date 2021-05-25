@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatChipsModule } from '@angular/material/chips';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 
@@ -21,6 +21,8 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 import { LoginEditorComponent } from './shared/forms/login-editor/login-editor.component';
 import { SignupEditorComponent } from './shared/forms/signup-editor/signup-editor.component';
 import { httpInterceptorProviders } from './http-interceptors';
+import { PlaceholderDisplayComponent } from './shared/placeholder-display/placeholder-display.component';
+import { PassworsdMatchValidatorDirective } from './shared/validators/passworsd-match-validator.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { httpInterceptorProviders } from './http-interceptors';
     CodeBlockElementComponent,
     AuthenticationComponent,
     LoginEditorComponent,
-    SignupEditorComponent
+    SignupEditorComponent,
+    PlaceholderDisplayComponent,
+    PassworsdMatchValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,10 @@ import { httpInterceptorProviders } from './http-interceptors';
     MatChipsModule,
     MatSnackBarModule,
   ],
-  providers: [httpInterceptorProviders],
+  providers: [
+    httpInterceptorProviders,
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

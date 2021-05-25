@@ -6,6 +6,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { CodeBlockService } from '../code-block.service';
 import { Output, EventEmitter } from '@angular/core';
 import { ENTER, SPACE, SEMICOLON } from '@angular/cdk/keycodes';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-code-block-element',
@@ -39,7 +40,7 @@ export class CodeBlockElementComponent implements OnInit {
     })
   }
 
-  constructor(private clipboard: Clipboard, public cbService: CodeBlockService) { }
+  constructor(private clipboard: Clipboard, public cbService: CodeBlockService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -61,10 +62,10 @@ export class CodeBlockElementComponent implements OnInit {
     if (!this.editMode) {
       this.cbService.updateCodeBlock(this.codeBlock).subscribe(
         updatedBlock => {
-
+          this._snackBar.open('CodeBlock Updated.');
         },
         error => {
-          window.alert(error);
+          // window.alert(error);
         });
     }
 
@@ -76,6 +77,7 @@ export class CodeBlockElementComponent implements OnInit {
       message => {
         this.deleteQueue = false;
         this.blockDeleted.emit(this.codeBlock.id);
+        this._snackBar.open('CodeBlock Deleted.');
       },
       error => {
         window.alert(error);

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { passwordsMatchValidator, passwordsPolicyValidator } from '../../validators/passworsd-match-validator.directive';
 
 @Component({
   selector: 'app-signup-editor',
@@ -9,11 +10,14 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./signup-editor.component.scss']
 })
 export class SignupEditorComponent implements OnInit {
+  isSignUpDisabled = false;
+
   signUpForm = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]]
-  });
+    password: ['', [Validators.required, passwordsPolicyValidator]],
+    reenteredPassword: ['', Validators.required]
+  }, {validators: passwordsMatchValidator});
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +28,12 @@ export class SignupEditorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  print(){
+    console.log(this.signUpForm.controls['email']);
+  }
+
   onSubmit(): void {
+    this.isSignUpDisabled = true;
     this.authService.signup(this.signUpForm.value).subscribe(userAuthData => {
       localStorage.setItem('userData', JSON.stringify(userAuthData));
       localStorage.setItem('userId', userAuthData.userId);
@@ -39,6 +48,9 @@ export class SignupEditorComponent implements OnInit {
       this.authService.startSessionTimer(expiration);
 
       this.router.navigate(['/add-to-list']);
+    }, 
+    errors => {
+      this.isSignUpDisabled = false;
     });
   }
 

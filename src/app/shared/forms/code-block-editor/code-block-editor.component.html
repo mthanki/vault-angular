@@ -2,16 +2,15 @@
     <input autofocus name="Name" maxlength="150" formControlName="name" placeholder="Name" autocomplete="off"
         type="text">
     <!-- <textarea rows="15" placeholder="code" autocomplete="off" spellcheck="false" wrap="soft" name="Code"></textarea> -->
-    <ngx-monaco-editor (init)="editorInit($event)" formControlName="code" [options]="cbService.editorOptions">
+    <ngx-monaco-editor (init)="editorInit($event)" formcontrolName="code" [options]="cbService.editorOptions">
     </ngx-monaco-editor>
-
     <!-- <input name="Tags" formControlName="tags" placeholder="Tags" autocomplete="off" type="text"> -->
     <mat-chip-list #chipList>
         <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
             {{tag}}
             <span matChipRemove class="material-icons">cancel</span>
         </mat-chip>
-        <input placeholder="Tags;" autocomplete="off" [matChipInputFor]="chipList"
+        <input placeholder="Tags; (hit space or enter)" autocomplete="off" [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
 

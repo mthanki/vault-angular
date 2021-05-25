@@ -1,79 +1,85 @@
 form {
-    width: 100%;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: space-around;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
 }
 
 input {
-    margin: 5px;
-    width: 90%;
-    height: 25px;
-    border-radius: 4px;
-    font-family: 'Handlee', cursive;
+  margin: 5px;
+  width: 90%;
+  height: 25px;
+  border-radius: 4px;
+  font-family: "Comic Neue", cursive;
 }
 
 input::placeholder {
-    font-style: italic;
-    margin-left: 2px;
+  font-style: italic;
+  margin-left: 2px;
+  color: black;
 }
 
-textarea {
-    width: 90%;
-    max-width: 90%;
-    min-width: 90%;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace;
-}
+// textarea {
+//   width: 90%;
+//   max-width: 90%;
+//   min-width: 90%;
+//   border-radius: 4px;
+//   font-family: "JetBrains Mono", monospace;
+// }
 
-textarea::placeholder {
-    font-family: 'JetBrains Mono', monospace;
-}
+// textarea::placeholder {
+//   font-family: "JetBrains Mono", monospace;
+// }
 
 button {
-    background-color: orange;
+  background-color: orange;
 }
 
-button:hover {
-    background-color: rgb(250, 170, 21);
+button:disabled {
+  background-color: gray;
 }
 
 .button-group {
-    width: 91%;
-    display: flex; 
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-    align-items: flex-end;
+  width: 91%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 #clear-button {
-    color: whitesmoke;
-    background-color: crimson;
-    margin-right: 25px;
+  color: whitesmoke;
+  background-color: crimson;
+  margin-right: 25px;
 }
 
-#clear-button:hover{
-    background-color: rgb(221, 33, 71);
+#clear-button:hover {
+  background-color: rgb(221, 33, 71);
 }
 
 mat-chip-list {
-    min-width: 91%;
-    max-width: 80%;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  min-width: 91%;
+  max-width: 80%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-input.mat-chip-input{
-    min-width: 90%;
+input.mat-chip-input {
+  min-width: 90%;
+}
+
+input.mat-chip-input::placeholder {
+  opacity: 1;
+  color: black;
 }
 
 mat-chip > span {
-    margin: 0 0 5px 10px;
+  margin: 0 0 5px 10px;
 }
 
-mat-chip{
-    opacity: 1;
-    font-weight: medium;
-    font-family: 'Courier New', Courier, monospace;
+mat-chip {
+  opacity: 1;
+  font-weight: bold;
+  font-family: "JetBrains", monospace;
 }

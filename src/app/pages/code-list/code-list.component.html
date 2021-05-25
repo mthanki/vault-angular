@@ -8,4 +8,7 @@
             </app-code-block-element>
         </li>
     </ul>
+    <ng-container *ngIf="!(codeBlocks.length)">
+        <app-placeholder-display [displayText]="noBlocksMessage"></app-placeholder-display>
+    </ng-container>
 </section>

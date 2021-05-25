@@ -11,6 +11,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
   styleUrls: ['./code-block-editor.component.scss']
 })
 export class CodeBlockEditorComponent implements OnInit {
+  isDisabled = false;
+
   editor: any;
   items: any;
   // just the html input for reading tags user input.
@@ -19,6 +21,7 @@ export class CodeBlockEditorComponent implements OnInit {
   visible = true;
   readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
   tags: string[] = [];
+  code: string = "";
 
   codeBlockForm = this.fb.group({
     name: ['', Validators.required],
@@ -41,12 +44,17 @@ export class CodeBlockEditorComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isDisabled = true;
     const creatorId = localStorage.getItem('userId');
     const codeBlock: CodeBlock = { ...this.codeBlockForm.value, creator: creatorId, tags: this.tags };
 
     this.cbService.createCodeBlock(codeBlock)
       .subscribe(cb => {
         this.resetForm();
+        this.isDisabled = false;
+      },
+      error => {
+        this.isDisabled = false;
       });
 
   }

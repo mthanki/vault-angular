@@ -3,39 +3,45 @@
 
 /* You can add global styles to this file, and also import other style files */
 body {
-    margin: 0;
-    background-color: #4d4d4d;
+  margin: 0;
+  background-color: #4d4d4d;
 }
 
 button {
-    cursor: pointer;
-    border-radius: 5px;
-    height: 35px;
-    width: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 35px;
+  width: 100px;
 }
 
 /* Class Styles */
 .backplate-section {
-    background-color: gray;
-    text-align: center;
-    margin: 0 auto;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 60%;
-    height: auto;
-    padding-bottom: 20px;
+  background-color: gray;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  height: auto;
+  padding-bottom: 20px;
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
 
 ngx-monaco-editor {
-    height: 400px;
-    max-width: 91%;
-    min-width: 91%;
-    border-radius: 4px;
-    white-space: pre-wrap;
-    text-align: start;
+  height: 400px;
+  max-width: 91%;
+  min-width: 91%;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  text-align: start;
+}
 
+button:disabled {
+  background-color: gray;
 }
