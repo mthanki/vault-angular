@@ -1,54 +1,54 @@
 nav {
-    display: flex;
-    position: fixed;
-    height: 60px;
-    background-color: crimson;
-    width: 100%;
-    justify-content: space-evenly;
+  display: flex;
+  position: fixed;
+  height: 60px;
+  background-color: crimson;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
-.placeholder{
-    height: 60px;
-    z-index: -1;
+.placeholder {
+  height: 60px;
+  z-index: -1;
 }
 
 ul {
-    list-style: none;
-    text-transform: uppercase;
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-end;
+  list-style: none;
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 li {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: medium;
-    cursor: pointer;
-    background-color: darkorange;
-    border: 2px solid black;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: medium;
+  cursor: pointer;
+  background-color: darkorange;
+  border: 2px solid black;
 }
 
 .logout {
-    background-color: initial;
-    border: 2px solid white;
-    color: white;
+  background-color: initial;
+  border: 2px solid white;
+  color: white;
 }
 
 li:hover {
-    text-decoration: underline;
-    text-underline-offset: 1px;
+  text-decoration: underline;
+  text-underline-offset: 1px;
 }
 
 .active {
-    text-decoration: underline;
-    text-underline-offset: 1px;
+  text-decoration: underline;
+  text-underline-offset: 1px;
 }
 
 // Move buttons to left of nav
-.routing-buttons-container{
-    display: flex;
-    margin-right: auto;
+.routing-buttons-container {
+  display: flex;
+  margin-right: auto;
 }

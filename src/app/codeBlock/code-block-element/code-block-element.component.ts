@@ -40,7 +40,10 @@ export class CodeBlockElementComponent implements OnInit {
     })
   }
 
-  constructor(private clipboard: Clipboard, public cbService: CodeBlockService, private _snackBar: MatSnackBar) { }
+  constructor(
+    private clipboard: Clipboard,
+    public cbService: CodeBlockService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -49,27 +52,30 @@ export class CodeBlockElementComponent implements OnInit {
   copyCode() {
     this.clipboard.copy(this.codeBlock.code);
 
-    this.showPopup = true;
-    setTimeout(() => {
-      this.showPopup = false;
-    }, 600);
+    // this.showPopup = true;
+    // setTimeout(() => {
+    //   this.showPopup = false;
+    // }, 600);
   }
 
   toggleEditMode() {
     this.editMode = !this.editMode;
     this.updateButtonLabel = this.editMode ? "Update" : "Edit";
+    this.editor.updateOptions({ readOnly: !this.editMode });
 
     if (!this.editMode) {
       this.cbService.updateCodeBlock(this.codeBlock).subscribe(
         updatedBlock => {
           this._snackBar.open('CodeBlock Updated.');
+          this.editor.updateOptions({ readOnly: !this.editMode });
         },
         error => {
           // window.alert(error);
+          this.editMode = !this.editMode;
+          this.updateButtonLabel = this.editMode ? "Update" : "Edit";
+          this.editor.updateOptions({ readOnly: !this.editMode });
         });
     }
-
-    this.editor.updateOptions({ readOnly: !this.editMode })
   }
 
   deleteBlock() {

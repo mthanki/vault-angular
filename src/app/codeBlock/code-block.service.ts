@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MonacoEditorConstructionOptions } from '@materia-ui/ngx-monaco-editor';
 import { Observable } from 'rxjs';
 import { DataService } from '../http/data.service';
 import { CodeBlock } from './code-block.model';
@@ -9,12 +10,13 @@ import { CodeBlock } from './code-block.model';
   providedIn: 'root'
 })
 export class CodeBlockService {
-  editorOptions = {
+
+  editorOptions: MonacoEditorConstructionOptions = {
     theme: 'vs-dark',
-    language: 'javascript',
-    readonly: true,
-    codeLens: false,
-    // lineNumbers: "on",
+    language: 'typescript',
+    roundedSelection: true,
+    autoIndent: 'full',
+    quickSuggestions : false,
   };
 
   private codeBlocksUrl = 'code-blocks';

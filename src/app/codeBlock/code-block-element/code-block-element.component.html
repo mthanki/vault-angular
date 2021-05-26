@@ -18,7 +18,7 @@
     </div>
 
     <!-- <div id="editor-container"> -->
-    <p (dblclick)="copyCode()" class="code">
+    <p class="code">
         <ngx-monaco-editor [class.highlight]="editMode" (init)="editorInit($event)" [(ngModel)]="codeBlock.code"
             [options]="cbService.editorOptions">
         </ngx-monaco-editor>
