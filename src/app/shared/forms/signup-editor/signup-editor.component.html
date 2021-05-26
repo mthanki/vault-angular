@@ -19,6 +19,9 @@
         <li *ngIf="signUpForm.controls['password'].hasError('hasSmallCaseError')">
             Please include at least one <strong>Small</strong> case character.
         </li>
+        <li *ngIf="signUpForm.controls['password'].hasError('hasEightCharacterError')">
+            Please include at least <strong>Eight</strong> character.
+        </li>
     </ul>
     <input [readonly]="!signUpForm.controls['password'].valid" name="Tags" formControlName="reenteredPassword"
         placeholder="Re-enter password" autocomplete="off" type="password">

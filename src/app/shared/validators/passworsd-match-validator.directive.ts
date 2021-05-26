@@ -24,9 +24,13 @@ export const passwordsPolicyValidator: ValidatorFn = (control: AbstractControl):
   const hasNumberError = !(new RegExp(/\d/).test(password));
   const hasCapitalCaseError = !(new RegExp(/[A-Z]/).test(password));
   const hasSmallCaseError = !(new RegExp(/[a-z]/).test(password));
+  const hasEightCharacterError = password.length >= 8 ? false : true;
 
   // console.log(hasCapitalCase, hasSmallCase, hasNumber, 'validator');
   // console.log((hasNumber && hasCapitalCase && hasSmallCase), 'q validator');
   
-  return (!hasNumberError && !hasCapitalCaseError && !hasSmallCaseError) ? null : { hasNumberError, hasSmallCaseError, hasCapitalCaseError };
+  return (!hasNumberError && !hasCapitalCaseError && !hasSmallCaseError && !hasEightCharacterError) 
+    ? null : { 
+      hasNumberError, hasSmallCaseError, hasCapitalCaseError, hasEightCharacterError
+    };
 };

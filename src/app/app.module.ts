@@ -23,6 +23,8 @@ import { SignupEditorComponent } from './shared/forms/signup-editor/signup-edito
 import { httpInterceptorProviders } from './http-interceptors';
 import { PlaceholderDisplayComponent } from './shared/placeholder-display/placeholder-display.component';
 import { PassworsdMatchValidatorDirective } from './shared/validators/passworsd-match-validator.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,12 @@ import { PassworsdMatchValidatorDirective } from './shared/validators/passworsd-
     MonacoEditorModule,
     MatChipsModule,
     MatSnackBarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     httpInterceptorProviders,
