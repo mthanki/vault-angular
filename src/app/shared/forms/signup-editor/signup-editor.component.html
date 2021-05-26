@@ -1,12 +1,15 @@
 <form (ngSubmit)="onSubmit()" method="POST" [formGroup]="signUpForm">
     <input name="Name" maxlength="150" formControlName="name" placeholder="Name" type="text">
-    <ul class="errors"
-        *ngIf="!signUpForm.controls['name'].pristine && signUpForm.controls['name'].hasError('required')">
-        <li>Name is required.</li>
+    <ul class="errors" *ngIf="!signUpForm.controls['name'].pristine">
+        <li *ngIf="signUpForm.controls['name'].hasError('required')">Name is required.</li>
+        <li *ngIf="signUpForm.controls['name'].hasError('hasWhiteSpaceError')">
+            <strong>Space</strong> is not allowed.
+        </li>
     </ul>
     <input name="Tags" formControlName="email" placeholder="Email" type="email">
-    <ul class="errors" *ngIf="!signUpForm.controls['email'].pristine && signUpForm.controls['email'].hasError('email')">
-        <li>Please enter an valid email address.</li>
+    <ul class="errors" *ngIf="!signUpForm.controls['email'].pristine">
+        <li *ngIf="signUpForm.controls['email'].hasError('email')">Please enter an valid email address.</li>
+        <li *ngIf="signUpForm.controls['email'].hasError('required')">Email is required.</li>
     </ul>
     <input name="Tags" formControlName="password" placeholder="Password" autocomplete="off" type="password">
     <ul *ngIf="!signUpForm.controls['password'].pristine" class="errors">
@@ -21,6 +24,9 @@
         </li>
         <li *ngIf="signUpForm.controls['password'].hasError('hasEightCharacterError')">
             Please include at least <strong>Eight</strong> character.
+        </li>
+        <li *ngIf="signUpForm.controls['password'].hasError('hasWhiteSpaceError')">
+            <strong>Space</strong> is not allowed.
         </li>
     </ul>
     <input [readonly]="!signUpForm.controls['password'].valid" name="Tags" formControlName="reenteredPassword"

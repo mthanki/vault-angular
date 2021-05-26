@@ -1,8 +1,8 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { passwordsMatchValidator, passwordsPolicyValidator } from '../../validators/passworsd-match-validator.directive';
+import { passwordsMatchValidator, passwordsPolicyValidator, whiteSpaceValidator } from '../../validators/passworsd-match-validator.directive';
 
 @Component({
   selector: 'app-signup-editor',
@@ -13,9 +13,9 @@ export class SignupEditorComponent implements OnInit {
   isSignUpDisabled = false;
 
   signUpForm = this.fb.group({
-    name: ['', Validators.required],
+    name: ['', [Validators.required, whiteSpaceValidator]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, passwordsPolicyValidator]],
+    password: ['', [Validators.required, passwordsPolicyValidator, whiteSpaceValidator]],
     reenteredPassword: ['', Validators.required]
   }, {validators: passwordsMatchValidator});
 

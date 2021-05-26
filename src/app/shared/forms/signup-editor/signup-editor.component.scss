@@ -11,7 +11,7 @@ input {
   width: 90%;
   height: 25px;
   border-radius: 4px;
-  font-family: "Handlee", cursive;
+  font-family: "Comic Neue", cursive, "Times New Roman", Times, serif;
 }
 
 input::placeholder {
@@ -73,4 +73,8 @@ ul {
 ul.errors > li {
   font-size: 14px;
   color: rgb(175, 0, 0);
+}
+
+button:disabled {
+  background-color: gray;
 }
