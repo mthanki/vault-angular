@@ -27,5 +27,20 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "app",
+      "urls": [
+        "/**",
+        "!/**/*login*",
+        "!/**/*signup*"
+      ],
+      "cacheConfig": {
+        "maxSize": 400,
+        "maxAge": "1d",
+        "strategy": "freshness"
+      }
+    }
   ]
 }
