@@ -13,10 +13,10 @@ export class CodeBlockService {
 
   editorOptions: MonacoEditorConstructionOptions = {
     theme: 'vs-dark',
-    language: 'typescript',
+    language: 'json',
     roundedSelection: true,
     autoIndent: 'full',
-    quickSuggestions : false,
+    quickSuggestions: false,
   };
 
   private codeBlocksUrl = 'code-blocks';

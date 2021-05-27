@@ -1,9 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpParams, HttpParamsOptions } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,21 @@ export class DataService {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { 
+  // avoid circular dependency
+  authService: any;
 
+  setAuthService(authService: any) {
+    this.authService = authService;
   }
+
+  getAuthService(): any {
+    return this.authService;
+  }
+
+  constructor(
+    private http: HttpClient,
+    private _snackBar: MatSnackBar,
+    private router: Router) { }
 
   get(segment: String, options: any): Observable<any> {
     return this.http.get(`${environment.url}/${segment}`, options).pipe(
@@ -40,7 +54,7 @@ export class DataService {
     );
   }
 
-  showErrorSnackBar(error: string){
+  showErrorSnackBar(error: string) {
     this._snackBar.open(error, '', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
@@ -51,6 +65,9 @@ export class DataService {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
+    } else if (error.status === 401) {
+      this.getAuthService().logout();
+      this.router.navigate(['/login']);
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.

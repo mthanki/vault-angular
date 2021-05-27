@@ -21,7 +21,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CodeBlockEditorComponent implements OnInit {
   @ViewChild(MonacoEditorComponent, { static: false })
   monacoComponent!: MonacoEditorComponent;
-  
+
   isDisabled = false;
 
   // just the html input for reading tags user input.
@@ -41,8 +41,8 @@ export class CodeBlockEditorComponent implements OnInit {
     public cbService: CodeBlockService,
     private monacoLoaderService: MonacoEditorLoaderService,
     private _snackBar: MatSnackBar
-    ) {
-      this.monacoLoaderService.isMonacoLoaded$
+  ) {
+    this.monacoLoaderService.isMonacoLoaded$
       .pipe(
         filter(isLoaded => !!isLoaded),
         take(1)
@@ -50,7 +50,7 @@ export class CodeBlockEditorComponent implements OnInit {
       .subscribe(() => {
         this.registerMonacoJsonSchemaValidator();
       });
-    }
+  }
 
   ngOnInit(): void {
   }
@@ -66,9 +66,9 @@ export class CodeBlockEditorComponent implements OnInit {
         this.isDisabled = false;
         this._snackBar.open('CodeBlock added successfully.')
       },
-      error => {
-        this.isDisabled = false;
-      });
+        error => {
+          this.isDisabled = false;
+        });
 
   }
 
@@ -99,9 +99,10 @@ export class CodeBlockEditorComponent implements OnInit {
   }
 
   registerMonacoJsonSchemaValidator() {
-    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
-      noSemanticValidation: true,
-      noSyntaxValidation: true,
+    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+      validate: false,
+      // noSemanticValidation: true,
+      // noSyntaxValidation: true,
     });
   }
 
