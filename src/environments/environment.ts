@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:8000/api'
+  url: 'https://vault-nodejs.herokuapp.com/api'
+  // url: 'http://localhost:8000/api'
 };
 
 /*
