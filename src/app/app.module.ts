@@ -25,6 +25,8 @@ import { PlaceholderDisplayComponent } from './shared/placeholder-display/placeh
 import { PassworsdMatchValidatorDirective } from './shared/validators/passworsd-match-validator.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ViewPasswordDirective } from './shared/directives/view-password.directive';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { environment } from '../environments/environment';
     LoginEditorComponent,
     SignupEditorComponent,
     PlaceholderDisplayComponent,
-    PassworsdMatchValidatorDirective
+    PassworsdMatchValidatorDirective,
+    ViewPasswordDirective,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,10 +64,12 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     httpInterceptorProviders,
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {
-      duration: 1500,
-      panelClass: ['white-snackbar']
-    }}
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {
+        duration: 1500,
+        panelClass: ['white-snackbar']
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })

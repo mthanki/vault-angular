@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { CodeBlock } from 'src/app/codeBlock/code-block.model';
 import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
 
@@ -14,6 +13,7 @@ export class CodeListComponent implements OnInit {
   noBlocksMessage = "No Blocks found, click on \'Add\' to start creating them."
   // Not utilized, just for syntatical purpose
   searchModel = "";
+  searchTags: string[] = [];
 
   constructor(private cbService: CodeBlockService) { }
 
@@ -29,7 +29,9 @@ export class CodeListComponent implements OnInit {
 
   onSearch(search: string): void {
     if (search) {
-      this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
+      this.searchTags = search.split(';');
+      // this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
+      this.searchedCodeBlocks = this.codeBlocks.filter(b => b.tags.every(t => search.includes(t)));
       // this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
     } else {
       this.searchedCodeBlocks = this.codeBlocks;

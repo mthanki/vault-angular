@@ -13,7 +13,7 @@
 
             <button *ngIf="!deleteQueue" (click)="deleteQueue = true">Delete</button>
             <button [class.queue-background]="editMode" (click)="toggleEditMode()">{{updateButtonLabel}}</button>
-            <button (click)="copyCode()">Copy</button>
+            <button (click)="copyCode()">{{copyButtonLabel}}</button>
         </div>
     </div>
 

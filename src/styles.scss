@@ -25,7 +25,7 @@ button {
   align-items: center;
   width: 60%;
   height: auto;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 
 html,
@@ -49,4 +49,31 @@ button:disabled {
 .white-snackbar {
   background: whitesmoke;
   color: black;
+}
+
+// Show/Hide password
+
+.checkbox-container{
+  display: flex;
+  flex-flow: row nowrap;
+  width: 90%;
+  margin-top: -15px;
+  margin-left: -5px;
+  // padding-left: -5px;
+}
+
+.checkbox-element{
+  flex: 0 5 17px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.checkbox-label{
+  flex: 1 1 auto;
+  text-align: left;
+  margin-top: auto;
+  margin-bottom: auto;
+  opacity: .8;
+  font-size: 14px;
+  font-family: "Comic Neue", cursive, "Times New Roman", Times, serif;
 }

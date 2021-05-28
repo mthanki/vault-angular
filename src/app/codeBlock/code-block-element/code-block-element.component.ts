@@ -1,5 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { fade, fadeUp } from 'src/animations';
 import { CodeBlock } from '../code-block.model';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -24,6 +23,7 @@ export class CodeBlockElementComponent implements OnInit {
   showPopup: boolean = false;
   editMode = false;
   updateButtonLabel = "Edit";
+  copyButtonLabel = "Copy";
   deleteQueue = false;
 
   readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
@@ -53,9 +53,10 @@ export class CodeBlockElementComponent implements OnInit {
     this.clipboard.copy(this.codeBlock.code);
 
     // this.showPopup = true;
-    // setTimeout(() => {
-    //   this.showPopup = false;
-    // }, 600);
+    this.copyButtonLabel = "Copied!";
+    setTimeout(() => {
+      this.copyButtonLabel = "Copy";
+    }, 600);
   }
 
   toggleEditMode() {

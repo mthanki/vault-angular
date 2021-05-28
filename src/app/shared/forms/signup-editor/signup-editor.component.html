@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" method="POST" [formGroup]="signUpForm">
+<form appViewPassword (ngSubmit)="onSubmit()" method="POST" [formGroup]="signUpForm">
     <input name="Name" maxlength="150" formControlName="name" placeholder="Name" type="text">
     <ul class="errors" *ngIf="!signUpForm.controls['name'].pristine">
         <li *ngIf="signUpForm.controls['name'].hasError('required')">Name is required.</li>
@@ -11,7 +11,8 @@
         <li *ngIf="signUpForm.controls['email'].hasError('email')">Please enter an valid email address.</li>
         <li *ngIf="signUpForm.controls['email'].hasError('required')">Email is required.</li>
     </ul>
-    <input name="Tags" formControlName="password" placeholder="Password" autocomplete="off" type="password">
+    <input name="Tags" #passwordField formControlName="password" placeholder="Password" autocomplete="off"
+        type="password">
     <ul *ngIf="!signUpForm.controls['password'].pristine" class="errors">
         <li *ngIf="signUpForm.controls['password'].hasError('hasNumberError')">
             Please include at least one <strong>Number</strong> character.
@@ -29,12 +30,17 @@
             <strong>Space</strong> is not allowed.
         </li>
     </ul>
-    <input [readonly]="!signUpForm.controls['password'].valid" name="Tags" formControlName="reenteredPassword"
-        placeholder="Re-enter password" autocomplete="off" type="password">
+    <input #repeatPasswordField [readonly]="!signUpForm.controls['password'].valid" name="Tags"
+        formControlName="reenteredPassword" placeholder="Re-enter password" autocomplete="off" type="password">
     <ul class="errors"
         *ngIf="!signUpForm.controls['reenteredPassword'].pristine && signUpForm?.hasError('passwordsDontMatch')">
         <li>Passwords do not match.</li>
     </ul>
+    <div class="checkbox-container">
+        <input class="checkbox-element" #passwordCheckBox type="checkbox" id="show-password" name="show-pass"
+            value="Bike">
+        <label class="checkbox-label" #passwordLabel for="show-pass">Show Password</label><br>
+    </div>
     <div class="button-group">
         <!-- <button type="button" (click)="print()">Print</button> -->
         <button type="button" id="clear-button" (click)="resetForm()">Reset</button>

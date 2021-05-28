@@ -1,0 +1,20 @@
+footer {
+    display: flex;
+    margin: 0 auto;
+    bottom: 100;
+    flex-flow: row wrap;
+    justify-content: center;
+    height: auto;
+    position: relative;
+}
+
+.copyright-section{
+    background-color: rgba(121, 121, 121, 0.8);
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+    position: fixed;
+    margin-bottom: 0;
+    width: 100%;
+    text-align: center;
+}

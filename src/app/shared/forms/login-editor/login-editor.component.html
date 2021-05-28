@@ -1,7 +1,12 @@
-<form (ngSubmit)="onSubmit()" method="POST" [formGroup]="loginForm">
-
+<form appViewPassword (ngSubmit)="onSubmit()" method="POST" [formGroup]="loginForm">
     <input name="Tags" formControlName="email" placeholder="Email" type="email">
-    <input name="Tags" formControlName="password" placeholder="Password" autocomplete="off" type="password">
+    <input name="Tags" #passwordField formControlName="password" id="password" placeholder="Password" autocomplete="off"
+        type="password">
+    <div class="checkbox-container">
+        <input class="checkbox-element" #passwordCheckBox type="checkbox" id="show-password" name="show-pass"
+            value="Bike">
+        <label class="checkbox-label" #passwordLabel for="show-pass">Show Password</label><br>
+    </div>
     <div class="button-group">
         <button type="button" id="clear-button" (click)="resetForm()">Reset</button>
         <button [disabled]="!loginForm.valid || !isLoginEnabled">Login</button>
