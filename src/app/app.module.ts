@@ -67,7 +67,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {
         duration: 1500,
-        panelClass: ['white-snackbar']
+        // panelClass: ['snackbar']
       }
     }
   ],
