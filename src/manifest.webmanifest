@@ -1,11 +1,11 @@
 {
   "name": "vault",
   "short_name": "vault",
-  "theme_color": "#1976d2",
+  "theme_color": "#dc143c",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "https://vault-angular-ad413.web.app",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

@@ -6,7 +6,6 @@
         </div>
 
         <li *ngIf="!isOnline" title="You're Offline, features are limited" id="network-stat">
-            <!-- <div></div> -->
         </li>
         <ng-container *ngIf="!authService.isLoggedIn">
             <li routerLink="signup" routerLinkActive="active">Signup</li>

@@ -59,7 +59,7 @@ import { FooterComponent } from './shared/footer/footer.component';
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:10000'
     }),
   ],
   providers: [
