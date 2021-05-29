@@ -17,6 +17,7 @@ export class CodeBlockService {
     roundedSelection: true,
     autoIndent: 'full',
     quickSuggestions: false,
+    wordWrap: "on"
   };
 
   private codeBlocksUrl = 'code-blocks';

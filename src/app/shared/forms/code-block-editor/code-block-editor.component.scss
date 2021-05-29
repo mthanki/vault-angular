@@ -12,6 +12,7 @@ input {
   height: 25px;
   border-radius: 4px;
   font-family: "Comic Neue", cursive;
+  text-transform: capitalize;
 }
 
 input::placeholder {
@@ -82,4 +83,11 @@ mat-chip {
   opacity: 1;
   font-weight: bold;
   font-family: "JetBrains", monospace;
+  border: 1px solid black;
+}
+
+.mat-chip.mat-standard-chip {
+  background-color: rgb(180, 206, 216);
+  color: black;
+  font-weight: bold;
 }

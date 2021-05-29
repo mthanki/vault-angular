@@ -36,7 +36,6 @@ export class CodeBlockElementComponent implements OnInit {
       readOnly: true,
       quickSuggestions: false,
       formatOnPaste: true,
-      wordWrap: "on"
     })
   }
 

@@ -2,7 +2,7 @@
     <ul>
         <div *ngIf="authService.isLoggedIn" class="routing-buttons-container">
             <li routerLink="add-to-list" routerLinkActive="active">Add</li>
-            <li routerLink="code-list" routerLinkActive="active">Vault</li>
+            <li routerLink="code-list" routerLinkActive="active">View</li>
         </div>
 
         <li *ngIf="!isOnline" title="You're Offline, features are limited" id="network-stat">
