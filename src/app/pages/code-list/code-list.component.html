@@ -1,7 +1,15 @@
 <section class="backplate-section">
     <h3>Code list</h3>
-    <input [ngModel]="searchModel" (ngModelChange)="onSearch($event)" name="search" autocomplete="off"
-        placeholder="Search">
+    <mat-chip-list #chipList>
+        <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+            {{tag}}
+            <span matChipRemove class="material-icons">cancel</span>
+        </mat-chip>
+        <input placeholder="Tags; (Press Space to add)" autocomplete="off" [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <!-- <input [ngModel]="searchModel" (ngModelChange)="onSearch($event)" name="search" autocomplete="off"
+        placeholder="Search"> -->
     <ul>
         <li *ngFor="let codeBlock of searchedCodeBlocks">
             <app-code-block-element (blockDeleted)="removeFromList($event)" [codeBlock]="codeBlock">

@@ -1,38 +1,64 @@
 section {
-    // min-height: 80%;
+  // min-height: 80%;
 }
 
 ul {
-    display: flex;
-    flex-flow: column nowrap;
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    width: 90%;
-    max-height: 78vh;
-    border-radius: 4px;
-    overflow-y: hidden;
-    overflow: scroll;
-    overflow-x: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  max-height: 78vh;
+  border-radius: 4px;
+  overflow-y: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 input {
-    margin: 5px;
-    width: 89%;
-    height: 25px;
-    border-radius: 4px;
+  margin: 5px;
+  width: 89%;
+  height: 25px;
+  border-radius: 4px;
 }
 
 li {
-    margin: 5px 0;
-    border-radius: 4px;
+  margin: 5px 0;
+  border-radius: 4px;
 }
 
 input::placeholder {
-    font-style: italic;
+  font-style: italic;
+}
+
+mat-chip-list {
+  min-width: 91%;
+  max-width: 80%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+input.mat-chip-input {
+  min-width: 90%;
+}
+
+input.mat-chip-input::placeholder {
+  opacity: 1;
+  color: black;
+}
+
+mat-chip > span {
+  margin: 0 0 5px 10px;
+}
+
+mat-chip {
+  opacity: 1;
+  font-weight: bold;
+  font-family: "JetBrains", monospace;
 }

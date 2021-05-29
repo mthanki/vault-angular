@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { DataService } from 'src/app/http/data.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,14 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(public authService: AuthService, private router: Router) { }
+  isOnline: boolean = true;
+
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private dataService: DataService) {
+      this.dataService.createOnline$().subscribe(isOnline => this.isOnline = isOnline);
+     }
 
   ngOnInit(): void {
     

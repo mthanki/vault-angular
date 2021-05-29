@@ -17,7 +17,7 @@ export class SignupEditorComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, passwordsPolicyValidator, whiteSpaceValidator]],
     reenteredPassword: ['', Validators.required]
-  }, {validators: passwordsMatchValidator});
+  }, { validators: passwordsMatchValidator });
 
   constructor(
     private fb: FormBuilder,
@@ -26,10 +26,6 @@ export class SignupEditorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  print(){
-    console.log(this.signUpForm.controls['email']);
   }
 
   onSubmit(): void {
@@ -48,10 +44,10 @@ export class SignupEditorComponent implements OnInit {
       this.authService.startSessionTimer(expiration);
 
       this.router.navigate(['/add-to-list']);
-    }, 
-    errors => {
-      this.isSignUpDisabled = false;
-    });
+    },
+      errors => {
+        this.isSignUpDisabled = false;
+      });
   }
 
   resetForm(): void {

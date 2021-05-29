@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeBlock } from 'src/app/codeBlock/code-block.model';
 import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
+import { ENTER, SPACE, SEMICOLON } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-code-list',
@@ -15,24 +17,20 @@ export class CodeListComponent implements OnInit {
   searchModel = "";
   searchTags: string[] = [];
 
+  readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
+  tags: string[] = [];
+
   constructor(private cbService: CodeBlockService) { }
 
   ngOnInit(): void {
     this.cbService.getUserCodeBlocks().subscribe(blocks => {
       this.searchedCodeBlocks = this.codeBlocks = blocks.codeBlocks;
     })
-
-    // this.cbService.getUserCodeBlocks().pipe(
-    //   map(cb => cb = cb.codeBlocks),
-    // )
   }
 
-  onSearch(search: string): void {
-    if (search) {
-      this.searchTags = search.split(';');
-      // this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
-      this.searchedCodeBlocks = this.codeBlocks.filter(b => b.tags.every(t => search.includes(t)));
-      // this.searchedCodeBlocks = this.codeBlocks.filter(cb => cb.tags.includes(search));
+  onSearch(): void {
+    if (this.tags.length) {
+      this.searchedCodeBlocks = this.codeBlocks.filter(b => this.tags.every(st => b.tags.includes(st)));
     } else {
       this.searchedCodeBlocks = this.codeBlocks;
     }
@@ -40,5 +38,28 @@ export class CodeListComponent implements OnInit {
 
   removeFromList(id: string) {
     this.searchedCodeBlocks = this.codeBlocks = this.codeBlocks.filter(block => block.id != id);
+    this.onSearch();
+  }
+
+  // tag input
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    if (value) {
+      this.tags.push(value);
+    }
+
+    // Clear the input value
+    event.input.value = '';
+    this.onSearch();
+  }
+
+  remove(tag: any): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+    this.onSearch();
   }
 }

@@ -69,7 +69,6 @@ export class CodeBlockEditorComponent implements OnInit {
         error => {
           this.isDisabled = false;
         });
-
   }
 
   resetForm() {

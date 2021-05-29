@@ -2,10 +2,10 @@ import { HttpClient, HttpErrorResponse, HttpParams, HttpParamsOptions } from '@a
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Observer, fromEvent, merge } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AuthService } from '../auth/auth.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,8 @@ import { AuthService } from '../auth/auth.service';
 export class DataService {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+  isOnline: boolean = true;
 
   // avoid circular dependency
   authService: any;
@@ -28,7 +30,10 @@ export class DataService {
   constructor(
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    private router: Router) { }
+    private router: Router) {
+
+    this.createOnline$().subscribe(isOnline => this.isOnline = isOnline);
+  }
 
   get(segment: String, options: any): Observable<any> {
     return this.http.get(`${environment.url}/${segment}`, options).pipe(
@@ -80,5 +85,15 @@ export class DataService {
     // Return an observable with a user-facing error message.
     return throwError(
       'Something bad happened; please try again later.');
+  }
+
+  createOnline$() {
+    return merge<boolean>(
+      fromEvent(window, 'offline').pipe(map(() => false)),
+      fromEvent(window, 'online').pipe(map(() => true)),
+      new Observable((sub: Observer<boolean>) => {
+        sub.next(navigator.onLine);
+        sub.complete();
+      }));
   }
 }
