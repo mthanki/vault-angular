@@ -23,7 +23,9 @@ export class AppComponent {
     this.dataService.setAuthService(this.authService);
 
     updates.available.subscribe(event => {
-      let snackBarRef = this._snackbar.open("New Version Available", "Update");
+      let snackBarRef = this._snackbar.open("New Version Available", "Update", {
+        duration: 5000,
+      });
       snackBarRef.onAction().subscribe(() => {
         updates.activateUpdate().then(() => document.location.reload());
       });
