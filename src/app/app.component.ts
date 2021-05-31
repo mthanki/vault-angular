@@ -22,16 +22,12 @@ export class AppComponent {
 
     this.dataService.setAuthService(this.authService);
 
-
     updates.available.subscribe(event => {
-      let snackBarRef = this._snackbar.open("New Version Available", "Update")
+      let snackBarRef = this._snackbar.open("New Version Available", "Update");
       snackBarRef.onAction().subscribe(() => {
-        document.location.reload();
+        updates.activateUpdate().then(() => document.location.reload());
       });
     });
-
-
   }
-
 
 }
