@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DataService } from '../http/data.service';
 
@@ -14,6 +15,7 @@ export class AuthService {
   constructor(
     private dataService: DataService,
     private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     const token = this.getAuthorizationToken();
     let expiration: any = localStorage.getItem('expiration');
@@ -51,6 +53,7 @@ export class AuthService {
     this.logoutTimer = setTimeout(() => {
       this.logout();
       this.router.navigate(['/login']);
+      this._snackBar.open("Session timed Out, please Login again.");
     }, remainingTime);
   }
 
