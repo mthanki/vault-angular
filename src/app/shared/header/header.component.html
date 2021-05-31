@@ -1,5 +1,6 @@
-<nav>
-    <ul>
+<nav [class.open]="isMobileMenuOpen">
+    <button id="menu-button" (click)="toggleMobileMenu()"><span class="material-icons">menu</span></button>
+    <ul (click)="isMobileMenuOpen = false">
         <div *ngIf="authService.isLoggedIn" class="routing-buttons-container">
             <li routerLink="add-to-list" routerLinkActive="active">Add</li>
             <li routerLink="code-list" routerLinkActive="active">View</li>

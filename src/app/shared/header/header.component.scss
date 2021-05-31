@@ -74,3 +74,73 @@ span {
   // width: 2px;
   // height: 2px;
 }
+
+#menu-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #menu-button {
+    display: initial;
+    height: 60px;
+    // width: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    span {
+      font-size: 40px;
+    }
+    justify-self: flex-start;
+    position: fixed;
+    top: 0;
+  }
+
+  .open {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+
+    ul,
+    .routing-buttons-container {
+      display: flex;
+      width: 100%;
+      padding: 0;
+      justify-content: flex-start;
+      justify-self: start;
+    }
+
+    .logout {
+      display: initial;
+    }
+
+    li {
+      width: 70%;
+    }
+
+    // .routing-buttons-container,
+    // .logout {
+    //   align-self: flex-start;
+    //   margin-right: initial;
+    //   width: 70%;
+    // }
+  }
+
+  nav {
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    // display: block;
+  }
+
+  ul,
+  .routing-buttons-container,
+  .logout {
+    flex-flow: column nowrap;
+    align-items: center;
+    display: none;
+  }
+
+  li {
+    width: 100%;
+  }
+}

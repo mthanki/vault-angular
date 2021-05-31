@@ -10,20 +10,25 @@ import { DataService } from 'src/app/http/data.service';
 })
 export class HeaderComponent implements OnInit {
   isOnline: boolean = true;
+  isMobileMenuOpen = false;
 
   constructor(
     public authService: AuthService,
     private router: Router,
     private dataService: DataService) {
-      this.dataService.createOnline$().subscribe(isOnline => this.isOnline = isOnline);
-     }
+    this.dataService.createOnline$().subscribe(isOnline => this.isOnline = isOnline);
+  }
 
   ngOnInit(): void {
-    
+
   }
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 }
