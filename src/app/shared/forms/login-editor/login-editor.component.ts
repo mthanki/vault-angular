@@ -34,6 +34,7 @@ export class LoginEditorComponent implements OnInit {
       localStorage.setItem('isLoggedIn', 'true');
 
       // const expiration = new Date(new Date().getTime() + 5000);
+      // Token expires after 1 Hr
       const expiration = new Date(new Date().getTime() + 1000 * 60 * 60);
       localStorage.setItem('expiration', expiration.toISOString());
 

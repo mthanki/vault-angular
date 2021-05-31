@@ -24,8 +24,6 @@ export class CodeBlockEditorComponent implements OnInit {
 
   isDisabled = false;
 
-  // just the html input for reading tags user input.
-  tagInput = "";
   // tag input
   visible = true;
   readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
@@ -98,10 +96,9 @@ export class CodeBlockEditorComponent implements OnInit {
   }
 
   registerMonacoJsonSchemaValidator() {
+    // Disable syntax and semantic validation of entered code to keep the overall form from being invalid
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: false,
-      // noSemanticValidation: true,
-      // noSyntaxValidation: true,
     });
   }
 

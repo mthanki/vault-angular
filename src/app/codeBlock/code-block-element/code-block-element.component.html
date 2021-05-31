@@ -1,6 +1,7 @@
-<div *ngIf="showPopup" @fadeUp id="popup-container">
+<!-- Currently not used -->
+<!-- <div *ngIf="showPopup" @fadeUp id="popup-container">
     <span id="popup">Copied!</span>
-</div>
+</div> -->
 <section>
     <div>
         <span class="text-start">{{codeBlock.name}}</span>
@@ -17,12 +18,10 @@
         </div>
     </div>
 
-    <!-- <div id="editor-container"> -->
     <p class="code">
         <ngx-monaco-editor [class.highlight]="editMode" (init)="editorInit($event)" [(ngModel)]="codeBlock.code"
             [options]="cbService.editorOptions">
         </ngx-monaco-editor>
-        <!-- <code>{{codeBlock.code}}</code> -->
     </p>
 
     <div id="chip-container">
@@ -33,5 +32,4 @@
         </mat-chip-list>
     </div>
 
-    <!-- <p class="text text-end">{{codeBlock.tags}}</p> -->
 </section>

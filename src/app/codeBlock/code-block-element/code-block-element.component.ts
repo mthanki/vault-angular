@@ -32,7 +32,6 @@ export class CodeBlockElementComponent implements OnInit {
     // Here you can access editor instance
     this.editor = editor;
     this.editor.updateOptions({
-      // lineNumbers: "off",
       readOnly: true,
       quickSuggestions: false,
       formatOnPaste: true,
@@ -51,7 +50,6 @@ export class CodeBlockElementComponent implements OnInit {
   copyCode() {
     this.clipboard.copy(this.codeBlock.code);
 
-    // this.showPopup = true;
     this.copyButtonLabel = "Copied!";
     setTimeout(() => {
       this.copyButtonLabel = "Copy";
@@ -70,7 +68,6 @@ export class CodeBlockElementComponent implements OnInit {
           this.editor.updateOptions({ readOnly: !this.editMode });
         },
         error => {
-          // window.alert(error);
           this.editMode = !this.editMode;
           this.updateButtonLabel = this.editMode ? "Update" : "Edit";
           this.editor.updateOptions({ readOnly: !this.editMode });

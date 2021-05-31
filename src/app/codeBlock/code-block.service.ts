@@ -25,7 +25,6 @@ export class CodeBlockService {
   constructor(private http: HttpClient, private dataService: DataService) { }
 
   getUserCodeBlocks(): Observable<any> {
-    // const params = new HttpParams({});
     return this.dataService.get(`${this.codeBlocksUrl}/user/all-blocks`, {});
   }
 
