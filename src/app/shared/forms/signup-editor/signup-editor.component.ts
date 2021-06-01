@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { LocalstorageService } from 'src/app/ssr-files/localstorage.service';
 import { passwordsMatchValidator, passwordsPolicyValidator, whiteSpaceValidator } from '../../validators/passworsd-match-validator.directive';
 
 @Component({
@@ -22,7 +23,8 @@ export class SignupEditorComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private ls: LocalstorageService
   ) { }
 
   ngOnInit(): void {
@@ -31,15 +33,15 @@ export class SignupEditorComponent implements OnInit {
   onSubmit(): void {
     this.isSignUpDisabled = true;
     this.authService.signup(this.signUpForm.value).subscribe(userAuthData => {
-      localStorage.setItem('userData', JSON.stringify(userAuthData));
-      localStorage.setItem('userId', userAuthData.userId);
-      localStorage.setItem('token', userAuthData.token);
-      localStorage.setItem('isLoggedIn', 'true');
+      this.ls.setItem('userData', JSON.stringify(userAuthData));
+      this.ls.setItem('userId', userAuthData.userId);
+      this.ls.setItem('token', userAuthData.token);
+      this.ls.setItem('isLoggedIn', 'true');
 
       this.authService.isLoggedIn = true;
 
       const expiration = new Date(new Date().getTime() + 1000 * 60 * 60);
-      localStorage.setItem('expiration', expiration.toISOString());
+      this.ls.setItem('expiration', expiration.toISOString());
 
       this.authService.startSessionTimer(expiration);
 

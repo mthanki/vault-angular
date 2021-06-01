@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DataService } from '../http/data.service';
+import { LocalstorageService } from '../ssr-files/localstorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,11 @@ export class AuthService {
   constructor(
     private dataService: DataService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private ls: LocalstorageService
   ) {
     const token = this.getAuthorizationToken();
-    let expiration: any = localStorage.getItem('expiration');
+    let expiration: any = this.ls.getItem('expiration');
     expiration = new Date(expiration);
 
     if (!!token && expiration > new Date()) {
@@ -39,11 +41,11 @@ export class AuthService {
   }
 
   getAuthorizationToken() {
-    return localStorage.getItem('token');
+    return this.ls.getItem('token');
   }
 
   logout() {
-    localStorage.clear();
+    this.ls.clear();
     this.isLoggedIn = false;
     clearTimeout(this.logoutTimer);
   }

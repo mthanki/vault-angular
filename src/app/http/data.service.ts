@@ -6,6 +6,7 @@ import { Observable, throwError, Observer, fromEvent, merge } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { WindowRefService } from '../ssr-files/window-ref.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,8 @@ export class DataService {
   constructor(
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    private router: Router) {
+    private router: Router,
+    private windowService: WindowRefService) {
 
     this.createOnline$().subscribe(isOnline => this.isOnline = isOnline);
   }
@@ -89,8 +91,8 @@ export class DataService {
 
   createOnline$() {
     return merge<boolean>(
-      fromEvent(window, 'offline').pipe(map(() => false)),
-      fromEvent(window, 'online').pipe(map(() => true)),
+      fromEvent(this.windowService.nativeWindow, 'offline').pipe(map(() => false)),
+      fromEvent(this.windowService.nativeWindow, 'online').pipe(map(() => true)),
       new Observable((sub: Observer<boolean>) => {
         sub.next(navigator.onLine);
         sub.complete();

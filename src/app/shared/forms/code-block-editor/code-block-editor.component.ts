@@ -12,6 +12,7 @@ import {
 } from '@materia-ui/ngx-monaco-editor';
 import { filter, take } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LocalstorageService } from 'src/app/ssr-files/localstorage.service';
 
 @Component({
   selector: 'app-code-block-editor',
@@ -38,7 +39,8 @@ export class CodeBlockEditorComponent implements OnInit {
     private fb: FormBuilder,
     public cbService: CodeBlockService,
     private monacoLoaderService: MonacoEditorLoaderService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private ls: LocalstorageService
   ) {
     this.monacoLoaderService.isMonacoLoaded$
       .pipe(
@@ -55,7 +57,7 @@ export class CodeBlockEditorComponent implements OnInit {
 
   onSubmit() {
     this.isDisabled = true;
-    const creatorId = localStorage.getItem('userId');
+    const creatorId = this.ls.getItem('userId');
     const codeBlock: CodeBlock = { ...this.codeBlockForm.value, creator: creatorId, tags: this.tags };
 
     this.cbService.createCodeBlock(codeBlock)

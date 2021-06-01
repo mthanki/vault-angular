@@ -21,7 +21,9 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {
+    initialNavigation: 'enabled'
+})
   ],
   exports: [
     RouterModule
