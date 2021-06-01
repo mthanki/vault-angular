@@ -72,7 +72,6 @@ export class CodeBlockEditorComponent implements OnInit {
   resetForm() {
     this.codeBlockForm.reset();
     this.tags = [];
-    this.tagInput = "";
   }
 
   // tag input
