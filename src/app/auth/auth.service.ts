@@ -9,7 +9,7 @@ import { LocalstorageService } from '../ssr-files/localstorage.service';
 })
 export class AuthService {
   userUrl = "users";
-  isLoggedIn = false;
+  isLoggedIn = true;
   redirectUrl = "/";
   logoutTimer: any;
 
@@ -17,10 +17,11 @@ export class AuthService {
     private dataService: DataService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private ls: LocalstorageService
+    private ls: LocalstorageService,
   ) {
     const token = this.getAuthorizationToken();
-    let expiration: any = this.ls.getItem('expiration');
+    let expiration: any;
+    expiration = this.ls.getItem('expiration');
     expiration = new Date(expiration);
 
     if (!!token && expiration > new Date()) {

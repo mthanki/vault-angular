@@ -2,7 +2,31 @@
   "hosting": [
     {
       "target": "vault",
-      "public": "dist/vault",
+      "public": "dist\\vault\\dist\\vault\\browser",
+      "ignore": [
+        "**/.*"
+      ],
+      "headers": [
+        {
+          "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public,max-age=31536000,immutable"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "ssr"
+        }
+      ]
+    },
+    {
+      "target": "vault",
+      "public": "dist/vault/browser",
       "ignore": [
         "**/.*"
       ],
@@ -24,5 +48,8 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "source": "dist/vault"
+  }
 }

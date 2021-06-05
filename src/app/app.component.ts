@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
 import { BehaviorSubject } from 'rxjs';
@@ -19,14 +18,11 @@ export class AppComponent {
 
   constructor(
     // avoid circular dependency error
-    private authService: AuthService,
     private dataService: DataService,
     updates: SwUpdate,
     private _snackbar: MatSnackBar,
-    @Inject(PLATFORM_ID) private platformId: any) {
-
-    // Detect if browser for SSR
-    AppComponent.isBrowser.next(isPlatformBrowser(platformId));
+    private authService: AuthService,
+  ) {
 
     this.dataService.setAuthService(this.authService);
 

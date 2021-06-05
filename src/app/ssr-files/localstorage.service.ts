@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppComponent } from '../app.component';
-
+import { SsrService } from './ssr.service';
 
 class LocalStorage implements Storage {
   [name: string]: any;
@@ -12,7 +12,6 @@ class LocalStorage implements Storage {
   setItem(key: string, value: string): void { }
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,14 +19,12 @@ export class LocalstorageService implements Storage {
 
   private storage: Storage;
 
-  constructor() {
+  constructor(private ssr: SsrService) {
     this.storage = new LocalStorage();
 
-    AppComponent.isBrowser.subscribe(isBrowser => {
-      if (isBrowser) {
-        this.storage = localStorage;
-      }
-    });
+    if (this.ssr.isBrowser()) {
+      this.storage = localStorage;
+    }
   }
 
   [name: string]: any;
