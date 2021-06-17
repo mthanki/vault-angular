@@ -28,6 +28,7 @@ export class LoginEditorComponent implements OnInit {
 
   onSubmit(): void {
     this.isLoginEnabled = false;
+
     this.authService.login(this.loginForm.value).subscribe(userAuthData => {
 
       this.ls.setItem('userData', JSON.stringify(userAuthData));

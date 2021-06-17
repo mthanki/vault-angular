@@ -1,7 +1,2 @@
-<section class="backplate-section">
-    <h3>{{heading}}</h3>
-    <div>
-        <app-signup-editor *ngIf="isSignUp"></app-signup-editor>
-        <app-login-editor *ngIf="!isSignUp"></app-login-editor>
-    </div>
-</section>
+<app-signup-editor *ngIf="isSignUp"></app-signup-editor>
+<app-login-editor *ngIf="!isSignUp"></app-login-editor>

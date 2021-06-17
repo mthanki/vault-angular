@@ -1,48 +1,71 @@
-<form appViewPassword (ngSubmit)="onSubmit()" method="POST" [formGroup]="signUpForm">
-    <input name="Name" maxlength="150" formControlName="name" placeholder="Name" type="text">
-    <ul class="errors" *ngIf="!signUpForm.controls['name'].pristine">
-        <li *ngIf="signUpForm.controls['name'].hasError('required')">Name is required.</li>
-        <li *ngIf="signUpForm.controls['name'].hasError('hasWhiteSpaceError')">
-            <strong>Space</strong> is not allowed.
-        </li>
-    </ul>
-    <input name="Tags" formControlName="email" placeholder="Email" type="email">
-    <ul class="errors" *ngIf="!signUpForm.controls['email'].pristine">
-        <li *ngIf="signUpForm.controls['email'].hasError('email')">Please enter an valid email address.</li>
-        <li *ngIf="signUpForm.controls['email'].hasError('required')">Email is required.</li>
-    </ul>
-    <input name="Tags" #passwordField formControlName="password" placeholder="Password" autocomplete="off"
-        type="password">
-    <ul *ngIf="!signUpForm.controls['password'].pristine" class="errors">
-        <li *ngIf="signUpForm.controls['password'].hasError('hasNumberError')">
-            Please include at least one <strong>Number</strong> character.
-        </li>
-        <li *ngIf="signUpForm.controls['password'].hasError('hasCapitalCaseError')">
-            Please include at least one <strong>Capital</strong> case character.
-        </li>
-        <li *ngIf="signUpForm.controls['password'].hasError('hasSmallCaseError')">
-            Please include at least one <strong>Small</strong> case character.
-        </li>
-        <li *ngIf="signUpForm.controls['password'].hasError('hasEightCharacterError')">
-            Please include at least <strong>Eight</strong> character.
-        </li>
-        <li *ngIf="signUpForm.controls['password'].hasError('hasWhiteSpaceError')">
-            <strong>Space</strong> is not allowed.
-        </li>
-    </ul>
-    <input #repeatPasswordField [readonly]="!signUpForm.controls['password'].valid" name="Tags"
-        formControlName="reenteredPassword" placeholder="Re-enter password" autocomplete="off" type="password">
-    <ul class="errors"
-        *ngIf="!signUpForm.controls['reenteredPassword'].pristine && signUpForm?.hasError('passwordsDontMatch')">
-        <li>Passwords do not match.</li>
-    </ul>
-    <div class="checkbox-container">
-        <input class="checkbox-element" #passwordCheckBox type="checkbox" id="show-password" name="show-pass"
-            value="Password">
-        <label class="checkbox-label" #passwordLabel for="show-password">Show Password</label><br>
+<form appViewPassword [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <img class="mb-4" src="assets/images/color-logo-no-bg.svg" alt="" width="100%" height="150px">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input required formControlName="name" autocomplete="name" type="email" class="form-control" id="Name"
+            aria-describedby="emailHelp">
+        <ul class="form-text" *ngIf="!signUpForm.controls['name'].pristine">
+            <li *ngIf="signUpForm.controls['name'].hasError('required')">Name is required.</li>
+            <li *ngIf="signUpForm.controls['name'].hasError('hasWhiteSpaceError')">
+                <strong>Space</strong> is not allowed.
+            </li>
+        </ul>
     </div>
-    <div class="button-group">
-        <button type="button" id="clear-button" (click)="resetForm()">Reset</button>
-        <button type="submit" [disabled]="!signUpForm.valid || isSignUpDisabled">Signup</button>
+    <div class="mb-3">
+        <label for="InputEmail" class="form-label">Email address</label>
+        <input required formControlName="email" autocomplete="email" type="email" class="form-control" id="InputEmail"
+            aria-describedby="emailHelp">
+        <ul class="form-text" *ngIf="!signUpForm.controls['email'].pristine">
+            <li *ngIf="signUpForm.controls['email'].hasError('email')">Please enter an valid email address.</li>
+            <li *ngIf="signUpForm.controls['email'].hasError('required')">Email is required.</li>
+        </ul>
     </div>
+    <div class="mb-3">
+        <label for="InputPassword" class="form-label">Password</label>
+        <input #passwordField required formControlName="password" autocomplete="current-password" type="password"
+            class="form-control" id="InputPassword">
+        <ul class="form-text" *ngIf="!signUpForm.controls['password'].pristine">
+            <li *ngIf="signUpForm.controls['password'].hasError('hasNumberError')">
+                Please include at least one <strong>Number</strong> character.
+            </li>
+            <li *ngIf="signUpForm.controls['password'].hasError('hasCapitalCaseError')">
+                Please include at least one <strong>Capital</strong> case character.
+            </li>
+            <li *ngIf="signUpForm.controls['password'].hasError('hasSmallCaseError')">
+                Please include at least one <strong>Small</strong> case character.
+            </li>
+            <li *ngIf="signUpForm.controls['password'].hasError('hasEightCharacterError')">
+                Please include at least <strong>Eight</strong> character.
+            </li>
+            <li *ngIf="signUpForm.controls['password'].hasError('hasWhiteSpaceError')">
+                <strong>Space</strong> is not allowed.
+            </li>
+        </ul>
+    </div>
+    <div class="mb-3">
+        <label for="ReenterPassword" class="form-label">Repeat Password</label>
+        <input #repeatPasswordField formControlName="reenteredPassword"
+            [readonly]="!signUpForm.controls['password'].valid" required autocomplete="off" type="password"
+            class="form-control" id="ReenterPassword">
+        <ul class="form-text"
+            *ngIf="!signUpForm.controls['reenteredPassword'].pristine && signUpForm?.hasError('passwordsDontMatch')">
+            <li>Passwords do not match.</li>
+        </ul>
+    </div>
+    <div class="mb-3 form-check">
+        <input #passwordCheckBox type="checkbox" class="form-check-input" id="rememberMe">
+        <label #passwordLabel class="form-check-label" for="rememberMe">Show Password</label>
+    </div>
+    <div class="d-grid gap-2">
+        <button [disabled]="!signUpForm.valid || isSignUpDisabled" type="submit" class="btn btn-primary">
+            <ng-container *ngIf="isSignUpDisabled">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Submitting...
+            </ng-container>
+            <ng-container *ngIf="!isSignUpDisabled">
+                Submit
+            </ng-container>
+        </button>
+    </div>
+    <small>Already have an account? <a routerLink="/login">Log In</a> instead</small>
 </form>

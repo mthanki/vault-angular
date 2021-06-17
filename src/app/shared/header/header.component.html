@@ -1,4 +1,4 @@
-<nav [class.open]="isMobileMenuOpen">
+<!-- <nav [class.open]="isMobileMenuOpen">
     <button id="menu-button" (click)="toggleMobileMenu()"><span class="material-icons">{{!isMobileMenuOpen ? "menu":
             "close"}}</span></button>
     <ul (click)="isMobileMenuOpen = false">
@@ -16,4 +16,41 @@
         <li *ngIf="authService.isLoggedIn" class="logout" (click)="logout()">Logout</li>
     </ul>
 </nav>
-<div class="placeholder"></div>
+<div class="placeholder"></div> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"> <img height="34px" src="assets/images/white-logo-no-bg.svg">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="code-list" routerLinkActive="active"
+                        aria-current="page">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLinkActive="active" routerLink="add-to-list">Add Snippet</a>
+                        </li>
+                        <li><a class="dropdown-item" routerLinkActive="active" routerLink="code-list">View ALl</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button *ngIf="!authService.isLoggedIn" type="button" routerLink="/login"
+                class="btn btn-outline-light my-2 my-sm-0">Log In</button>
+            <button *ngIf="!authService.isLoggedIn" type="button" routerLink="/signup"
+                class="btn btn-success my-2 my-sm-0">Sign Up</button>
+            <button *ngIf="authService.isLoggedIn" (click)="logout()" type="button"
+                class="btn btn-danger my-2 my-sm-0">Log
+                Out</button>
+        </div>
+    </div>
+</nav>
