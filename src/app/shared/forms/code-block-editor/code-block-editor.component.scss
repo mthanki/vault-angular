@@ -1,81 +1,16 @@
-form {
-  width: 100%;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: space-around;
+.chip-input {
+  margin: 18px 0;
 }
 
-input {
-  margin: 5px;
-  width: 90%;
-  height: 25px;
-  border-radius: 4px;
-  font-family: "Comic Neue", cursive;
-  text-transform: capitalize;
+input.mat-chip-input {
+  min-width: 100%;
 }
 
-input::placeholder {
-  font-style: italic;
-  margin-left: 2px;
+input.mat-chip-input::placeholder {
+  opacity: 0.8;
   color: black;
 }
 
 button {
-  background-color: orange;
-}
-
-button:disabled {
-  background-color: gray;
-}
-
-.button-group {
-  width: 91%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-#clear-button {
-  color: whitesmoke;
-  background-color: crimson;
-  margin-right: 25px;
-}
-
-#clear-button:hover {
-  background-color: rgb(221, 33, 71);
-}
-
-mat-chip-list {
-  min-width: 91%;
-  max-width: 80%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-input.mat-chip-input {
-  min-width: 90%;
-}
-
-input.mat-chip-input::placeholder {
-  opacity: 1;
-  color: black;
-}
-
-mat-chip > span {
-  margin: 0 0 5px 10px;
-}
-
-mat-chip {
-  opacity: 1;
-  font-weight: bold;
-  font-family: "JetBrains", monospace;
-  border: 1px solid black;
-}
-
-.mat-chip.mat-standard-chip {
-  background-color: rgb(180, 206, 216);
-  color: black;
-  font-weight: bold;
+  margin-right: 5px;
 }

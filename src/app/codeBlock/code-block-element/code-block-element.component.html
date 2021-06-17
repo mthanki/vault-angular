@@ -1,26 +1,23 @@
-<!-- Currently not used -->
-<!-- <div *ngIf="showPopup" @fadeUp id="popup-container">
-    <span id="popup">Copied!</span>
-</div> -->
-<section>
+<section class="mb-3">
     <div>
         <span class="text-start">{{codeBlock.name}}</span>
         <div class="copy-section">
             <ng-container *ngIf="deleteQueue">
                 <span class="copy-message">Are you sure?</span>
-                <button class="decision-buttons" (click)="deleteBlock()">Yes</button>
-                <button class="decision-buttons" (click)="deleteQueue = false">No</button>
+                <button class="btn" (click)="deleteBlock()">Yes</button>
+                <button class="btn" (click)="deleteQueue = false">No</button>
             </ng-container>
 
-            <button *ngIf="!deleteQueue" (click)="deleteQueue = true">Delete</button>
-            <button [class.queue-background]="editMode" (click)="toggleEditMode()">{{updateButtonLabel}}</button>
-            <button (click)="copyCode()">{{copyButtonLabel}}</button>
+            <button class="btn btn-danger" *ngIf="!deleteQueue" (click)="deleteQueue = true">Delete</button>
+            <button class="btn btn-info" [class.queue-background]="editMode"
+                (click)="toggleEditMode()">{{updateButtonLabel}}</button>
+            <button class="btn btn-info" (click)="copyCode()">{{copyButtonLabel}}</button>
         </div>
     </div>
 
     <p class="code">
-        <ngx-monaco-editor [class.highlight]="editMode" (init)="editorInit($event)" [(ngModel)]="codeBlock.code"
-            [options]="cbService.editorOptions">
+        <ngx-monaco-editor class="form-control" [class.highlight]="editMode" (init)="editorInit($event)"
+            [(ngModel)]="codeBlock.code" [options]="cbService.editorOptions">
         </ngx-monaco-editor>
     </p>
 

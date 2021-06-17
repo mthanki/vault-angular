@@ -1,20 +1,24 @@
 <form (ngSubmit)="onSubmit()" method="POST" [formGroup]="codeBlockForm">
-    <input autofocus name="Name" maxlength="150" formControlName="name" placeholder="Name" autocomplete="off"
-        type="text">
-    <ngx-monaco-editor formControlName="code" [options]="cbService.editorOptions">
+    <div class="mb-3">
+        <input class="form-control" type="text" autofocus name="Name" maxlength="150" formControlName="name"
+            placeholder="Name" autocomplete="off">
+    </div>
+    <ngx-monaco-editor class="form-control" formControlName="code" [options]="cbService.editorOptions">
     </ngx-monaco-editor>
 
-    <mat-chip-list #chipList>
-        <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
-            {{tag}}
-            <span matChipRemove class="material-icons">cancel</span>
-        </mat-chip>
-        <input placeholder="Tags; (Press Space to add)" autocomplete="off" [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-
-    <div class="button-group">
-        <button type="button" id="clear-button" (click)="resetForm()">Clear</button>
-        <button [disabled]="!codeBlockForm.valid || !tags.length">Add</button>
+    <div class="chip-input">
+        <mat-chip-list class="" #chipList>
+            <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                {{tag}}
+                <span matChipRemove class="material-icons">cancel</span>
+            </mat-chip>
+            <input class="form-control" placeholder="Tags; (Press Space to add)" autocomplete="off"
+                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
     </div>
+
+    <button class="btn btn-danger" type="button" (click)="resetForm()">Clear</button>
+    <button class="btn btn-primary" [disabled]="!codeBlockForm.valid || !tags.length">Add</button>
+
 </form>

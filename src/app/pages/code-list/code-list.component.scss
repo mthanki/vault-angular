@@ -8,7 +8,6 @@ ul {
   list-style: none;
   margin: 0 auto;
   padding: 0;
-  width: 90%;
   max-height: 78vh;
   border-radius: 4px;
   overflow-y: hidden;
@@ -21,20 +20,9 @@ ul {
   background: transparent; /* Optional: just make scrollbar invisible */
 }
 
-input {
-  margin: 5px;
-  width: 89%;
-  height: 25px;
-  border-radius: 4px;
-}
-
 li {
   margin: 5px 0;
   border-radius: 4px;
-}
-
-input::placeholder {
-  font-style: italic;
 }
 
 mat-chip-list {
@@ -44,12 +32,8 @@ mat-chip-list {
   margin-bottom: 5px;
 }
 
-input.mat-chip-input {
-  min-width: 90%;
-}
-
 input.mat-chip-input::placeholder {
-  opacity: 1;
+  opacity: 0.8;
   color: black;
 }
 
