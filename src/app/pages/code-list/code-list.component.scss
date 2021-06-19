@@ -1,23 +1,10 @@
-section {
-  // min-height: 80%;
-}
-
 ul {
   display: flex;
   flex-flow: column nowrap;
   list-style: none;
   margin: 0 auto;
   padding: 0;
-  max-height: 78vh;
   border-radius: 4px;
-  overflow-y: hidden;
-  overflow: scroll;
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 li {

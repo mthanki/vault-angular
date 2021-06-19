@@ -14,3 +14,8 @@ input.mat-chip-input::placeholder {
 button {
   margin-right: 5px;
 }
+
+// Position the remove(x) buttom properly inside the mat-chip element
+mat-chip > span {
+  margin: 0 0 5px 10px;
+}

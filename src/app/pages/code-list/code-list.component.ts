@@ -12,7 +12,10 @@ import { MatChipInputEvent } from '@angular/material/chips';
 export class CodeListComponent implements OnInit {
   codeBlocks: CodeBlock[] = [];
   searchedCodeBlocks: CodeBlock[] = [];
-  noBlocksMessage = "No Blocks found, click on \'Add\' to start creating them."
+  noBlocksMessage = "No Snippets found, click on the button below to start adding them.";
+  noBlocksHeader = "No Content found";
+  noBlocksButtonText = "Add Snippets";
+  noBlocksButtonLink = "/add-to-list";
 
   searchTags: string[] = [];
 

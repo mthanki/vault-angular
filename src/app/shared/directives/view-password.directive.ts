@@ -3,6 +3,7 @@ import { AfterContentInit, ContentChild, Directive, ElementRef, HostListener, In
   selector: '[appViewPassword]'
 })
 export class ViewPasswordDirective implements AfterContentInit {
+  // Get all the elements from form marked with #ViewChild
   @ContentChild('passwordLabel') passwordLabel!: ElementRef;
   @ContentChild('passwordCheckBox') passwordCheckBox!: ElementRef;
   @ContentChild('passwordField') passwordField!: ElementRef;
@@ -30,7 +31,7 @@ export class ViewPasswordDirective implements AfterContentInit {
     if (this.shouldShow) {
       field.setAttribute('type', 'text');
       repeatField?.setAttribute('type', 'text');
-      label.innerHTML = label.innerHTML.replace('Show', 'Hide');
+      label.innerHTML = label.innerHTML.replace('Show', 'Hide'); // Show password -> Hide password
     } else {
       field.setAttribute('type', 'password');
       repeatField?.setAttribute('type', 'password');

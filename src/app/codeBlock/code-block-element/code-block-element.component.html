@@ -1,17 +1,21 @@
-<section class="mb-3">
-    <div>
-        <span class="text-start">{{codeBlock.name}}</span>
-        <div class="copy-section">
-            <ng-container *ngIf="deleteQueue">
-                <span class="copy-message">Are you sure?</span>
-                <button class="btn" (click)="deleteBlock()">Yes</button>
-                <button class="btn" (click)="deleteQueue = false">No</button>
-            </ng-container>
+<section class="mb-3 container">
+    <div class="row">
+        <span class="col">{{codeBlock.name}}</span>
 
-            <button class="btn btn-danger" *ngIf="!deleteQueue" (click)="deleteQueue = true">Delete</button>
-            <button class="btn btn-info" [class.queue-background]="editMode"
-                (click)="toggleEditMode()">{{updateButtonLabel}}</button>
-            <button class="btn btn-info" (click)="copyCode()">{{copyButtonLabel}}</button>
+        <div class="col content">
+            <!-- <ng-container class="col">
+                    <span class="copy-message">Are you sure?</span>
+                    <button class="btn btn-outline-primary" (click)="deleteBlock()">Yes</button>
+                    <button class="btn btn-outline-primary" (click)="deleteQueue = false">No</button>
+                </ng-container> -->
+
+            <div class="col">
+                <button class="btn btn-danger" *ngIf="!deleteQueue" (click)="deleteBlock()">Delete</button>
+                <button class="btn btn-info" [class.queue-background]="editMode"
+                    (click)="toggleEditMode()">{{updateButtonLabel}}</button>
+                <button class="btn btn-success" (click)="copyCode()">{{copyButtonLabel}}</button>
+            </div>
+
         </div>
     </div>
 

@@ -1,56 +1,61 @@
 button {
   margin-left: 5px;
+  margin-top: 5px;
 }
 
-span {
-  padding-left: 5px;
-}
-
-div {
-  text-align: start;
-}
-
-.copy-section {
-  float: right;
-  margin-top: 0px;
-}
-
-.text {
-  text-align: start;
-  padding-left: 5px;
-  margin: 0 auto;
-  height: auto;
-}
-
-.text-start {
-  text-decoration: underline;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-
-.text-end {
-  border-end-start-radius: 4px;
-  border-end-end-radius: 4px;
-  height: auto;
-}
-
-span {
+.content {
   text-align: right;
 }
+
+// span {
+//   padding-left: 5px;
+// }
+
+// div {
+//   text-align: start;
+// }
+
+// .copy-section {
+//   float: right;
+//   margin-top: 0px;
+// }
+
+// .text {
+//   text-align: start;
+//   padding-left: 5px;
+//   margin: 0 auto;
+//   height: auto;
+// }
+
+// .text-start {
+//   text-decoration: underline;
+//   border-top-left-radius: 4px;
+//   border-top-right-radius: 4px;
+// }
+
+// .text-end {
+//   border-end-start-radius: 4px;
+//   border-end-end-radius: 4px;
+//   height: auto;
+// }
+
+// span {
+//   text-align: right;
+// }
 
 section {
   background-color: rgb(233, 233, 233);
   border-radius: 4px;
 }
 
-.copy-message {
-  opacity: 0.7;
-  font-family: "Comic Neue", cursive, "Times New Roman", Times, serif;
-  font-style: italic;
-  margin-right: 10px;
-  margin-top: 8px;
-  font-size: 15px;
-}
+// .copy-message {
+//   opacity: 0.7;
+//   font-family: "Comic Neue", cursive, "Times New Roman", Times, serif;
+//   font-style: italic;
+//   margin-right: 10px;
+//   margin-top: 8px;
+//   font-size: 15px;
+// }
 
 ngx-monaco-editor {
   margin: 10px;
@@ -67,13 +72,13 @@ ngx-monaco-editor {
   box-shadow: 0 0 5px 5px rgb(15, 168, 189);
 }
 
-.queue-background {
-  background-color: burlywood;
-}
+// .queue-background {
+//   background-color: burlywood;
+// }
 
-#editor-container {
-  padding: 0;
-}
+// #editor-container {
+//   padding: 0;
+// }
 
 mat-chip {
   opacity: 1;

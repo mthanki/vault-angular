@@ -20,7 +20,7 @@
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> <img height="34px" src="assets/images/white-logo-no-bg.svg">
+        <a class="navbar-brand" href="/code-list"> <img height="34px" src="assets/images/white-logo-no-bg.svg">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,21 +28,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" routerLink="code-list" routerLinkActive="active"
-                        aria-current="page">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Code
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" routerLinkActive="active" routerLink="add-to-list">Add Snippet</a>
-                        </li>
-                        <li><a class="dropdown-item" routerLinkActive="active" routerLink="code-list">View All</a></li>
-                    </ul>
-                </li>
+                <ng-container *ngIf="authService.isLoggedIn">
+                    <li class="nav-item">
+                        <a class="nav-link active" routerLink="code-list" routerLinkActive="active"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Code
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" routerLinkActive="active" routerLink="add-to-list">Add
+                                    Snippet</a>
+                            </li>
+                            <li><a class="dropdown-item" routerLinkActive="active" routerLink="code-list">View All</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
             </ul>
             <button *ngIf="!authService.isLoggedIn" type="button" routerLink="/login"
                 class="btn btn-outline-light my-2 my-sm-0">Log In</button>

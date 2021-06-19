@@ -14,5 +14,7 @@
     </li>
 </ul>
 <ng-container *ngIf="!(codeBlocks.length)">
-    <app-placeholder-display [displayText]="noBlocksMessage"></app-placeholder-display>
+    <app-placeholder-display [buttonLink]="noBlocksButtonLink" [buttonText]="noBlocksButtonText"
+        [header]="noBlocksHeader" [displayText]="noBlocksMessage">
+    </app-placeholder-display>
 </ng-container>

@@ -6,6 +6,8 @@ import { CodeBlockService } from '../code-block.service';
 import { Output, EventEmitter } from '@angular/core';
 import { ENTER, SPACE, SEMICOLON } from '@angular/cdk/keycodes';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
 @Component({
   selector: 'app-code-block-element',
@@ -26,6 +28,8 @@ export class CodeBlockElementComponent implements OnInit {
   copyButtonLabel = "Copy";
   deleteQueue = false;
 
+  modalRef!: BsModalRef;
+
   readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
 
   editorInit(editor: any) {
@@ -41,7 +45,8 @@ export class CodeBlockElementComponent implements OnInit {
   constructor(
     private clipboard: Clipboard,
     public cbService: CodeBlockService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
 
@@ -76,14 +81,23 @@ export class CodeBlockElementComponent implements OnInit {
   }
 
   deleteBlock() {
-    this.cbService.deleteCodeBlock(this.codeBlock).subscribe(
-      message => {
-        this.deleteQueue = false;
-        this.blockDeleted.emit(this.codeBlock.id);
-        this._snackBar.open('CodeBlock Deleted.');
-      },
-      error => {
-        window.alert(error);
-      });
+    const initialState = {
+      message: `Are you sure?`,
+      closeBtnName: "Cancel",
+      confirmBtnName: "Delete",
+    };
+    this.modalRef = this.modalService.show(ModalComponent, { initialState });
+    (<ModalComponent>this.modalRef.content).onClose.subscribe(result => {
+      if (result) {
+        this.cbService.deleteCodeBlock(this.codeBlock).subscribe(
+          message => {
+            this.blockDeleted.emit(this.codeBlock.id);
+            this._snackBar.open('CodeBlock Deleted.');
+          },
+          error => {
+            this._snackBar.open('Could not delete CodeBlock.');
+          });
+      }
+    });
   }
 }
