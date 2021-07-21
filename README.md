@@ -1,3 +1,12 @@
+# Screenshots
+![Add](https://imgur.com/YrGwcJh.png)
+
+![View](https://imgur.com/jRpToOt.png)
+
+![Login](https://imgur.com/UWLAUZ0.png)
+
+![Signup](https://imgur.com/UWLAUZ0.png)
+
 # Vault
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
