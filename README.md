@@ -5,7 +5,7 @@
 
 ![Login](https://imgur.com/UWLAUZ0.png)
 
-![Signup](https://imgur.com/UWLAUZ0.png)
+![Signup](https://imgur.com/O9CZeLK.png)
 
 # Vault
 
