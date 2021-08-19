@@ -54,9 +54,9 @@ export class AuthService {
   startSessionTimer(expiration: Date) {
     const remainingTime = expiration.getTime() - new Date().getTime();
     this.logoutTimer = setTimeout(() => {
-      this.logout();
-      this.router.navigate(['/login']);
-      this._snackBar.open("Session timed Out, please Login again.");
+      // this.logout();
+      // this.router.navigate(['/login']);
+      // this._snackBar.open("Session timed Out, please Login again.");
     }, remainingTime);
   }
 

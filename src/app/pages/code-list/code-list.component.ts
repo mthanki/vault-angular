@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeBlock } from 'src/app/codeBlock/code-block.model';
 import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
-import { ENTER, SPACE, SEMICOLON } from '@angular/cdk/keycodes';
+import { ENTER, SEMICOLON } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
@@ -19,7 +19,7 @@ export class CodeListComponent implements OnInit {
 
   searchTags: string[] = [];
 
-  readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
+  readonly separatorKeysCodes = [ENTER, SEMICOLON] as const;
   tags: string[] = [];
 
   constructor(private cbService: CodeBlockService) { }

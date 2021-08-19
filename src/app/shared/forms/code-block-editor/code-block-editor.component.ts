@@ -2,13 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CodeBlock } from 'src/app/codeBlock/code-block.model';
 import { CodeBlockService } from 'src/app/codeBlock/code-block.service';
-import { ENTER, SPACE, SEMICOLON } from '@angular/cdk/keycodes';
+import { ENTER, SEMICOLON } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {
   MonacoEditorComponent,
-  MonacoEditorConstructionOptions,
   MonacoEditorLoaderService,
-  MonacoStandaloneCodeEditor
 } from '@materia-ui/ngx-monaco-editor';
 import { filter, take } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -27,7 +25,7 @@ export class CodeBlockEditorComponent implements OnInit {
 
   // tag input
   visible = true;
-  readonly separatorKeysCodes = [ENTER, SPACE, SEMICOLON] as const;
+  readonly separatorKeysCodes = [ENTER, SEMICOLON] as const;
   tags: string[] = [];
 
   codeBlockForm = this.fb.group({

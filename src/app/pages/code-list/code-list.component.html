@@ -4,7 +4,7 @@
         {{tag}}
         <span matChipRemove class="material-icons">cancel</span>
     </mat-chip>
-    <input class="form-control" placeholder="Tags; (Press Space to add)" autocomplete="off" [matChipInputFor]="chipList"
+    <input class="form-control" placeholder="Tags (Press Enter to add)" autocomplete="off" [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
 </mat-chip-list>
 <ul>
